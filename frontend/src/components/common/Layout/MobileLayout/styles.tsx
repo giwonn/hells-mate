@@ -4,5 +4,5 @@ export const MobileLayout = styled.main`
   min-width: 360px;
   max-width: 400px;
   margin: 0 auto;
-  padding: 16px;
+  padding: ${({ theme }) => theme.paddings.globalPadding};
 `;

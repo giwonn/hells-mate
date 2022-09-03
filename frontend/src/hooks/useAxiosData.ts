@@ -12,7 +12,9 @@ export function useAxiosData(url: string) {
       .get(url, {})
       .then((response) => {
         console.log("query sent", response.data);
-        setApiGroupData(response.data);
+        setTimeout(() => {
+          setApiGroupData(response.data);
+        }, 2500);
       })
       .catch(function (error) {
         console.log(error.toJSON());

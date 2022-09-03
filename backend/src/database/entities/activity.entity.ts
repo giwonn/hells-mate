@@ -6,15 +6,15 @@ import { User } from './user.entity';
 
 
 export class Activity extends BaseEntity {
-  @ManyToOne(() => User, (user) => user.activityId)
+  @ManyToOne(() => User, (user) => user.userActivityId)
   userId: User;
 
-  @ManyToOne(() => Group, (group) => group.activityId)
+  @ManyToOne(() => Group, (group) => group.userActivityId)
   groupId: Group;
 
   @Column({ type: 'varchar', name: 'point', comment: '포인트' })
   point: number;
 
-  @ManyToOne(() => GroupMissionDayList, (mission) => mission.activityId)
+  @ManyToOne(() => GroupMissionDayList, (mission) => mission.userActivityId)
   missionId: GroupMissionDayList;
 }

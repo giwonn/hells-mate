@@ -20,5 +20,5 @@ export class GroupMissionDayList extends BaseEntity {
   categoryId: MissionCategory;
 
   @OneToMany(() => Activity, (activity) => activity.missionId)
-  activityId: Activity;
+  userActivityId: Activity[];
 }

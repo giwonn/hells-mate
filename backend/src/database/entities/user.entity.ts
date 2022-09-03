@@ -21,5 +21,5 @@ export class User extends BaseEntity {
   groupId: Group;
 
   @OneToMany(() => Activity, (activity) => activity.userId)
-  activityId: Activity[];
+  userActivityId: Activity[];
 }

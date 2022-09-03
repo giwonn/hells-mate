@@ -9,6 +9,4 @@ export class UserGroup extends BaseEntity {
 
   @OneToMany(() => User, (user) => user.userGroupId)
   userId: User[];
-  //group
-  //userid
 }

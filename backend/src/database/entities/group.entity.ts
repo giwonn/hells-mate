@@ -16,7 +16,7 @@ export class Group extends BaseEntity {
   token: string;
 
   @OneToMany(() => UserGroup, (userGroup) => userGroup.groupId)
-  userGroupId: UserGroup;
+  userGroupId: UserGroup[];
 
   @OneToOne(() => User, (user) => user.groupId)
   @JoinColumn()
@@ -32,5 +32,5 @@ export class Group extends BaseEntity {
   groupMissionDateId: GroupMissionDate[];
 
   @OneToMany(() => Activity, (activity) => activity.groupId)
-  activityId: Activity[];
+  userActivityId: Activity[];
 }

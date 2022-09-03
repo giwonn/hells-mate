@@ -1,10 +1,10 @@
+import React, { HTMLAttributes, useEffect, useState } from "react";
 import Profile from "components/common/Profile";
 import {
   ChallengeProfileMoreButton,
   ChallengeProfileMoreButtonText,
   StyledChallengeProfile,
 } from "components/pages/main/Challenge/ChallengeProfile/styles";
-import React, { HTMLAttributes, useEffect, useState } from "react";
 import { Member } from "types/api";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {

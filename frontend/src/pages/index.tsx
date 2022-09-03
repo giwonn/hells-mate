@@ -16,11 +16,11 @@ import { MOCKUP_MEMBERS } from "mockups/members";
 
 import rankingIcon from "/public/icons/ranking_icon.svg";
 
-// declare global {
-//   interface Window {
-//     Kakao: any;
-//   }
-// }
+declare global {
+  interface Window {
+    Kakao: any;
+  }
+}
 const Home: NextPage = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [isShowing, setIsShowing] = useState(false);
@@ -32,7 +32,11 @@ const Home: NextPage = () => {
           setIsShowing(false);
         }}
       >
-        <MainPageBottomSheetSection member={MOCKUP_MEMBERS[0]} />
+        <MainPageBottomSheetSection
+          member={MOCKUP_MEMBERS[0]}
+          currentUser={MOCKUP_MEMBERS[0]}
+          checkStatusInfo={[false, false, true]}
+        />
       </BottomSheet>
       <StyledMainPageContainer>
         {/* <AddChallengeButton /> */}

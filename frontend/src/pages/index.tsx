@@ -8,7 +8,6 @@ declare global {
 const Home: NextPage = () => {
   return (
     <>
-      <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
       <div>Hello World</div>
     </>
   );

@@ -1,13 +1,4 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  Req,
-} from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Req } from '@nestjs/common';
 import { GroupService } from './group.service';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { createGroupDto, MissionDto } from '../dto/mission.dto';
@@ -66,5 +57,12 @@ export class GroupController {
       message: '참여도 통계 보기',
       data: result,
     };
+  }
+
+  @Get(':groupId/invite')
+  async invite(@Req() req: any, @Param('groupId') groupId: number) {
+    console.log('-----');
+    const inviteUrl = await this.groupService.createInviteUrl(groupId);
+    return req;
   }
 }

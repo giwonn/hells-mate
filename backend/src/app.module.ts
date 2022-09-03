@@ -10,6 +10,7 @@ import { GroupModule } from './controller/group/group.module';
 import { ActivityModule } from './controller/activeity/activity.module';
 import { RankModule } from './controller/rank/rank.module';
 import { AuthModule } from '@/controller/auth/auth.module';
+import { AuthModule } from '@/controller/auth/auth.module';
 
 @Module({
   imports: [
@@ -22,6 +23,8 @@ import { AuthModule } from '@/controller/auth/auth.module';
     GroupModule,
     ActivityModule,
     RankModule,
+    UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

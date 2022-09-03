@@ -9,22 +9,32 @@ export class AuthController {
   @Redirect()
   async kakaoLogin(@Query('code') code, @Res({ passthrough: true }) res) {
     const accessToken = await this.authService.getAccessToken(code);
-    res.cookie('Authentication', accessToken, {
-      domain: 'localhost',
-      path: '/',
-      httpOnly: true,
-    });
 
-    const userInfo = await this.authService.getUserInfo(accessToken);
+    console.log('-----');
+    console.log(accessToken);
+    console.log('-----');
+    return true;
+    // await axios.post(
+    //   `${process.env.FRONTEND_URL}/login`,
+    //   {},
+    //   {
+    //     headers: {
+    //       Authorization: accessToken,
+    //     },
+    //   },
+    // );
 
-    const checkUser = await this.authService.search(userInfo.id.toString());
-    if (!checkUser) {
-      const user = await this.authService.register(userInfo);
-      console.log(user);
-    }
-
-    // console.log(user);
-
-    return { url: process.env.KAKAO_LOGIN_REDIRECT_URI };
+    // const userInfo = await this.authService.getUserInfo(accessToken);
+    //
+    // const checkUser = await this.authService.search(userInfo.id.toString());
+    // if (!checkUser) {
+    //   const user = await this.authService.register(userInfo);
+    //   console.log(user);
+    // }
+    //
+    // // console.log(user);
+    //
+    // return { url: process.env.KAKAO_LOGIN_REDIRECT_URI };
+    return { url: 'http://localhost:3000' };
   }
 }

@@ -3,12 +3,13 @@ import { createGroupDto, MissionDto } from '../dto/mission.dto';
 import { Group } from '../../database/entities';
 import { Connection, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class GroupService {
   constructor(
     private connection: Connection,
-
+    private jwtService: JwtService,
     @InjectRepository(Group)
     private groupRepository: Repository<Group>,
   ) {}
@@ -38,5 +39,22 @@ export class GroupService {
   async select참여도(groupId: number) {
     // 참여도 통계 보기
     return null;
+  }
+
+  async createInviteUrl(groupId: number) {
+    const group = await this.groupRepository.findOne({
+      where: { id: groupId },
+    });
+
+    const payload = {
+      token: group.token,
+    };
+
+    const token = await this.jwtService.sign(payload, {
+      secret: process.env.JWT_ACCESS_TOKEN_SECRET,
+      expiresIn: `${process.env.JWT_ACCESS_TOKEN_EXPIRATION_TIME}s`,
+    });
+
+    return token;
   }
 }

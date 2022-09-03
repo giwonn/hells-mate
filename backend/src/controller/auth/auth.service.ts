@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Connection, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from '@/database/entities';
+import { UserService } from '@/controller/user/user.service';
 
 export interface UserInfo {
   id: number;
@@ -30,6 +31,7 @@ export class AuthService {
     private connection: Connection,
     @InjectRepository(User)
     private userRepository: Repository<User>,
+    private userService: UserService,
   ) {}
 
   async getAccessToken(code: string): Promise<string> {
@@ -49,11 +51,21 @@ export class AuthService {
       data: new URLSearchParams(body).toString(),
     });
 
+    // console.log(response);
+
     if (response.status === 200) {
-      return response.data.access_token;
+      const userInfo = await this.getUserInfo(response.data.access_token);
+      console.log('---');
+      console.log(userInfo);
+      console.log('---');
+      if (!userInfo) {
+        return;
+      }
+
+      return this.userService.getAccessToken(userInfo);
     }
 
-    return '';
+    return;
   }
 
   async getUserInfo(accessToken: string) {
@@ -83,7 +95,7 @@ export class AuthService {
     user.token = data.id.toString();
     if (data.properties) {
       user.profile = data.properties?.profile_image ?? '';
-      user.name = data.properties?.nickname ?? '';
+      user.nickname = data.properties?.nickname ?? '';
     }
 
     const createdUser = await this.userRepository.save(user);

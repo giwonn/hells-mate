@@ -8,11 +8,13 @@ import { Group } from '../../database/entities';
 export class MissionService {
   constructor(
     private connection: Connection,
+
     @InjectRepository(Group)
     private groupRepository: Repository<Group>,
   ) {}
 
-  async createGroup(data: createGroupDto): Promise<Group> {
+  async createGroup(userId: number, data: createGroupDto): Promise<Group> {
+    // getMany();
     const getGroup = await this.groupRepository
       .createQueryBuilder('group')
       .where('group.id=:id', { id: 1 })

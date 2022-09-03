@@ -10,10 +10,12 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ormConfig } from '../ormconfig';
 import { UserModule } from './controller/user/user.module';
+import { MissionModule } from './controller/mission/mission.module';
 
 @Module({
   imports: [
     UserModule,
+    MissionModule,
     TypeOrmModule.forFeature([]),
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot(ormConfig),

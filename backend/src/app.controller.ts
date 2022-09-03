@@ -6,19 +6,8 @@ import { ApiOperation } from '@nestjs/swagger';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('')
-  @ApiOperation({
-    summary: '',
-  })
+  @Get()
   getStart(): string {
-    return this.appService.getHello();
-  }
-
-  @Get('test')
-  @ApiOperation({
-    summary: '',
-  })
-  getHello(): string {
     return this.appService.getHello();
   }
 }

@@ -3,6 +3,8 @@ import { AppModule } from './app.module';
 import { HttpExceptionFilter } from './common/http-exception.filter';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import * as cookieParser from 'cookie-parser';
+
 declare const module: any;
 
 async function bootstrap() {
@@ -30,10 +32,14 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document);
 
   const port = process.env.PORT || 3000;
+
+  app.use(cookieParser());
+
   await app.listen(port);
   if (module.hot) {
     module.hot.accept();
     module.hot.dispose(() => app.close());
   }
 }
+
 bootstrap();

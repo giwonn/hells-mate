@@ -1,9 +1,4 @@
-import {
-  HttpException,
-  MiddlewareConsumer,
-  Module,
-  NestModule,
-} from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
@@ -14,9 +9,11 @@ import { MissionModule } from './controller/mission/mission.module';
 import { GroupModule } from './controller/group/group.module';
 import { ActivityModule } from './controller/activeity/activity.module';
 import { RankModule } from './controller/rank/rank.module';
+import { AuthModule } from '@/controller/auth/auth.module';
 
 @Module({
   imports: [
+    AuthModule,
     UserModule,
     MissionModule,
     TypeOrmModule.forFeature([]),

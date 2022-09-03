@@ -1,20 +1,25 @@
-import { Column, OneToMany } from 'typeorm';
+import { Column, ManyToOne, OneToMany, OneToOne } from 'typeorm';
+import { Activity } from './activity.entity';
 import BaseEntity from './base.entity';
 import { Group } from './group.entity';
+import { UserGroup } from './user_group.entity';
 
 export class User extends BaseEntity {
-  @Column({ type: 'varchar', name: 'auth_type', comment: '인증 방법' })
-  authType: string;
-
-  @Column({ type: 'varchar', name: 'name', comment: '이름' })
+  @Column({ type: 'varchar', name: 'nickname', comment: '닉네임' })
   name: string;
 
-  @Column({ type: 'varchar', name: 'token', comment: '토큰' })
+  @Column({ type: 'varchar', name: 'profile', comment: '프로필' })
+  profile: string;
+
+  @Column({ type: 'varchar', name: 'token', comment: '카카오톡 OAuth 토큰' })
   token: string;
 
-  @Column('varchar', { name: 'password', select: false })
-  password: string;
+  @ManyToOne(() => UserGroup, (userGroup) => userGroup.userId)
+  userGroupId: UserGroup;
 
-  @OneToMany(() => Group, (group) => group.User)
-  Group: Group[];
+  @OneToOne(() => Group, (group) => group.userId)
+  isAdmin: boolean;
+
+  @OneToMany(() => Activity, (activity) => activity.userId)
+  activityId: Activity[];
 }

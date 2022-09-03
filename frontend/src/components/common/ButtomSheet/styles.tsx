@@ -21,7 +21,7 @@ export const ContentWrapper = styled(motion.div)`
   transform: translateY(-100%);
 
   width: 100%;
-  height: 190px;
+  height: 460px;
 
   background-color: ${({ theme }) => theme.color.white};
   border-top-left-radius: ${({ theme }) => theme.radius.lg};

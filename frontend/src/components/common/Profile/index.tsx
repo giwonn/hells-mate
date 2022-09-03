@@ -19,6 +19,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   currentUser: number;
   challengeTitle: string;
   description: string;
+  isClickable: boolean;
 }
 
 function Profile({
@@ -27,6 +28,7 @@ function Profile({
   currentUser,
   challengeTitle,
   description,
+  isClickable = true,
   ...props
 }: Props) {
   const [isShowing, setIsShowing] = useState(false);
@@ -38,7 +40,9 @@ function Profile({
           height: 40px; // TODO: 알 수 없는 이유로 높이 지정 안하면 이미지보다 큰 버튼이 생성됨.
         `}
         onClick={() => {
-          setIsShowing(true);
+          if (isClickable) {
+            setIsShowing(true);
+          }
           // console.log(member.id, MOCKUP_MEMBERS[0].id);
         }}
       >

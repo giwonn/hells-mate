@@ -6,6 +6,7 @@ import { Member } from "types/api";
 
 import { FlexColumnContainer } from "./styles";
 import BottomSheetChallenge from "./BottomSheetChallenge/index";
+import Router from "next/router";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   member: Member;
@@ -36,9 +37,13 @@ function MainPageBottomSheetSection({
         checkStatusInfo={checkStatusInfo}
       />
       <Button
+        variant={member.id === currentUser.id ? "default" : "disable"}
         css={css`
           margin-bottom: 35px;
         `}
+        onClick={() => {
+          member.id === currentUser.id ? Router.push("/clear") : null;
+        }}
       >
         인증하기
       </Button>

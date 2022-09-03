@@ -16,7 +16,7 @@ function BottomSheetResultSelector({ member, isOwner, checkStatusInfo, ...props 
   const [checkStatus, setCheckStatus] = useState(checkStatusInfo);
   return (
     <SelectorContainer>
-      <Profile member={member} checkStatusInfo={[false, true, false]} />
+      <Profile isClickable={false} member={member} checkStatusInfo={[false, true, false]} />
       <SelectorItemContainer>
         <BottomSheetResultSelectorItem
           score={5}

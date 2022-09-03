@@ -11,7 +11,7 @@ export class GroupMissionDate extends BaseEntity {
   Group: Group;
 
   @Column({ type: 'varchar', name: 'date', comment: '날짜' })
-  date: Date;
+  date: string;
 
   @OneToMany(() => Activity, (activity) => activity.GroupMissionDate)
   Activity: Activity[];

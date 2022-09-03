@@ -11,6 +11,7 @@ import { GroupService } from './group.service';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { createGroupDto } from '../dto/group.dto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { OptionalJwtAuthGuard } from '@/auth/optional-jwt-auth.guard';
 
 @Controller('group')
 @ApiTags('group')
@@ -19,7 +20,7 @@ export class GroupController {
   constructor(private readonly groupService: GroupService) {}
 
   @ApiOperation({
-    summary: '팀장이 그룹을 생성하는 api',
+    summary: '[완성/서하서하]팀장이 그룹을 생성하는 api',
   })
   @UseGuards(JwtAuthGuard)
   @Post('create')
@@ -49,12 +50,12 @@ export class GroupController {
   }
 
   @ApiOperation({
-    summary: '참여한 그룹리스트 조회 api',
+    summary: '[완성/서하서하]참여한 그룹리스트 조회 api',
   })
-  // @UseGuards(JwtAuthGuard)
-  @Get('/mygroups')
-  async getJoinedGroupList(@Req() req: any) {
-    const result = await this.groupService.getJoinedGroupList(req.user.id);
+  @UseGuards(OptionalJwtAuthGuard)
+  @Get()
+  async getGroupList(@Req() req: any) {
+    const result = await this.groupService.getGroupList(req.user.id);
     return {
       code: 200,
       message: '그룹 리스트 조회 설공',

@@ -26,7 +26,6 @@ const Home: NextPage = () => {
   console.log(apiGroupData);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [isShowing, setIsShowing] = useState(false);
-  return <Loading />;
   if (apiGroupData) {
     return (
       <>

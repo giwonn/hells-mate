@@ -3,8 +3,9 @@ export interface Member {
   profilesrc: string | null;
 }
 
-export interface Challenges {
-  title: string;
+export interface ChallengeType {
+  challengeTitle: string;
   description: string;
+  category: "food" | "exercise";
   members: Member[];
 }

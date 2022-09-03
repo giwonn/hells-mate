@@ -14,31 +14,28 @@ import {
 import Image from "next/image";
 import React, { HTMLAttributes } from "react";
 import forkKinfeIcon from "/public/images/forkKnifeIcon.svg";
+import dumbbellIcon from "/public/images/dumbbellIcon.svg";
+import bigDumbbellIcon from "/public/images/ep_exercise_icon.svg";
 import navigateNextIcon from "/public/images/navigateNext.svg";
 import foodIcon from "/public/images/ep_food_icon.svg";
 import ChallengeProfile from "components/pages/Challenge/ChallengeProfile";
-import { Member } from "types/api";
-import { totalmem } from "os";
+import { Member, ChallengeType } from "types/api";
 import Link from "next/link";
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
-  title: string;
-  description: string;
-  members: Member[];
-}
+interface Props extends HTMLAttributes<HTMLDivElement>, ChallengeType {}
 
-function Challenge({ title, description, members, ...props }: Props) {
+function Challenge({ challengeTitle, description, members, category, ...props }: Props) {
   return (
     <StyledChallenge {...props}>
       <FlexRibbonColumn>
-        <ChallengeRibbon />
+        <ChallengeRibbon category={category} />
       </FlexRibbonColumn>
       <FlexContentColumn>
         <FlexContentIconColumn>
-          <Image src={forkKinfeIcon} />
+          <Image src={category === "food" ? forkKinfeIcon : dumbbellIcon} />
         </FlexContentIconColumn>
         <FlexContentInfoColumn>
-          <ChallengeTitleText>{title}</ChallengeTitleText>
+          <ChallengeTitleText>{challengeTitle}</ChallengeTitleText>
           <ChallengeDescriptionText>{description}</ChallengeDescriptionText>
           <ChallengeProfile members={members} />
         </FlexContentInfoColumn>
@@ -49,7 +46,7 @@ function Challenge({ title, description, members, ...props }: Props) {
             </a>
           </Link>
 
-          <Image src={foodIcon} />
+          <Image src={category === "food" ? foodIcon : bigDumbbellIcon} width={90} height={90} />
         </FlexLastColumn>
       </FlexContentColumn>
     </StyledChallenge>

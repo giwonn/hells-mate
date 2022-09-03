@@ -1,5 +1,9 @@
 import styled from "@emotion/styled";
 
+interface StyleChallengeCategory {
+  category: "food" | "exercise";
+}
+
 export const StyledChallenge = styled.div`
   display: flex;
   border-radius: 10px;
@@ -35,8 +39,9 @@ export const FlexLastColumn = styled.div`
   min-width: 0; */
 `;
 
-export const ChallengeRibbon = styled.div`
-  background-color: ${({ theme }) => theme.color.orange};
+export const ChallengeRibbon = styled.div<StyleChallengeCategory>`
+  background-color: ${({ theme, category }) =>
+    category === "food" ? theme.color.orange : theme.color.mint};
   width: 8px;
   height: 100%;
   border-radius: 10px 0 0 10px;

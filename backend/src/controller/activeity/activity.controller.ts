@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Req } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req } from '@nestjs/common';
 import { ActivityService } from './activity.service';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CompleteMissionDto } from '../dto/mission.dto';
@@ -25,5 +25,10 @@ export class ActivityController {
       message: '미션 인증하기 완료',
       data: null,
     };
+  }
+
+  @Get()
+  async detail() {
+    return this.activityService.detail();
   }
 }

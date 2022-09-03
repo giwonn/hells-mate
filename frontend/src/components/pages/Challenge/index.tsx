@@ -17,19 +17,17 @@ import forkKinfeIcon from "/public/images/forkKnifeIcon.svg";
 import navigateNextIcon from "/public/images/navigateNext.svg";
 import foodIcon from "/public/images/ep_food_icon.svg";
 import ChallengeProfile from "components/pages/Challenge/ChallengeProfile";
-
-interface Member {
-  name: string;
-  profilesrc: string | null;
-}
+import { Member } from "types/api";
+import { totalmem } from "os";
+import Link from "next/link";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   title: string;
   description: string;
-  member: Member;
+  members: Member[];
 }
 
-function Challenge({ ...props }: Props) {
+function Challenge({ title, description, members, ...props }: Props) {
   return (
     <StyledChallenge {...props}>
       <FlexRibbonColumn>
@@ -40,14 +38,17 @@ function Challenge({ ...props }: Props) {
           <Image src={forkKinfeIcon} />
         </FlexContentIconColumn>
         <FlexContentInfoColumn>
-          <ChallengeTitleText>맥주 안마시기</ChallengeTitleText>
-          <ChallengeDescriptionText>
-            30일후에 중요 약속 있다면서 살빼야지 맥주 왜 마시나
-          </ChallengeDescriptionText>
-          <ChallengeProfile />
+          <ChallengeTitleText>{title}</ChallengeTitleText>
+          <ChallengeDescriptionText>{description}</ChallengeDescriptionText>
+          <ChallengeProfile members={members} />
         </FlexContentInfoColumn>
         <FlexLastColumn>
-          <Image src={navigateNextIcon} />
+          <Link href="#" passHref>
+            <a>
+              <Image src={navigateNextIcon} />
+            </a>
+          </Link>
+
           <Image src={foodIcon} />
         </FlexLastColumn>
       </FlexContentColumn>

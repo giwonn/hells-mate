@@ -1,10 +1,17 @@
 import styled from "@emotion/styled";
+import Image from "next/image";
 
 export const StyledProfile = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 6px;
+`;
+
+export const ProfileImage = styled(Image)`
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
 `;
 
 export const ProfilePictureBase = styled.div`

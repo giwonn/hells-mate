@@ -132,17 +132,17 @@ export class GroupService {
       '지수',
       '차현우',
       '민준',
-      '업습니다.',
+      '송희',
     ];
 
     const groupCategoryId: any = [1, 2, 1, 1];
     let k = 0;
     result.group = userGroupList.map((x: any, i) => {
-      const cnt = Math.ceil(Math.random() * 4);
+      const cnt = Math.ceil(Math.random() * 5);
       let name = [];
       ++k;
       for (let j = 0; j < cnt; j++) {
-        const cnt2 = Math.ceil(Math.ceil(Math.random() * 18));
+        const cnt2 = Math.ceil(Math.ceil(Math.random() * 16));
         name.push({
           id: ++k,
           nickname: nameList[cnt2],

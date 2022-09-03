@@ -4,7 +4,7 @@ import { UpdateAuthDto } from './dto/update-auth.dto';
 
 @Injectable()
 export class UserService {
-  async validateUser(email: string, password: string) {
+  async validateUser(email:string, password:string) {
     return true;
   }
 }

@@ -1,19 +1,15 @@
 import {
+  Body,
   Controller,
   Get,
-  Post,
-  Body,
-  Patch,
   Param,
-  Delete,
+  Post,
   Req,
-  Query,
   UseGuards,
 } from '@nestjs/common';
 import { GroupService } from './group.service';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { createGroupDto, groupIdDto } from '../dto/group.dto';
-import { User } from 'src/database/entities';
+import { createGroupDto } from '../dto/group.dto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @Controller('group')
@@ -63,12 +59,5 @@ export class GroupController {
       message: '그룹 리스트 조회 설공',
       data: result,
     };
-  }
-
-  @Get(':groupId/invite')
-  async invite(@Req() req: any, @Param('groupId') groupId: number) {
-    console.log('-----');
-    const inviteUrl = await this.groupService.createInviteUrl(groupId);
-    return req;
   }
 }

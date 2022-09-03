@@ -6,12 +6,15 @@ import { theme } from "styles/theme";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <MobileLayout>
-        <Component {...pageProps} />
-      </MobileLayout>
-    </ThemeProvider>
+    <>
+      <ThemeProvider theme={theme}>
+        <script src="https://developers.kakao.com/sdk/js/kakao.js" async defer></script>
+        <GlobalStyles />
+        <MobileLayout>
+          <Component {...pageProps} />
+        </MobileLayout>
+      </ThemeProvider>
+    </>
   );
 }
 

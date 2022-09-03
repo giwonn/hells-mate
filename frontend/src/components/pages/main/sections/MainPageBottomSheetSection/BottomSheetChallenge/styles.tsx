@@ -1,15 +1,14 @@
 import styled from "@emotion/styled";
 
 interface StyleChallengeCategory {
-  category: number;
+  category: "food" | "exercise";
 }
 
 export const StyledChallenge = styled.div`
   display: flex;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.color.white};
-
-  box-shadow: 0px 2px 8px rgba(95, 123, 255, 0.25);
+  margin: 0 -20px 0;
 `;
 
 export const FlexColumn = styled.div``;
@@ -38,7 +37,7 @@ export const FlexLastColumn = styled.div`
 
 export const ChallengeRibbon = styled.div<StyleChallengeCategory>`
   background-color: ${({ theme, category }) =>
-    category === 1 ? theme.color.orange : theme.color.mint};
+    category === "food" ? theme.color.orange : theme.color.mint};
   width: 8px;
   height: 100%;
   border-radius: 10px 0 0 10px;

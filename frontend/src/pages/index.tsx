@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { NextPage } from "next";
 import Image from "next/image";
+import AddChallengeButton from "components/pages/main/AddChallengeButton";
 import Calendar from "components/pages/main/Calendar";
 import Challenge from "components/pages/main/Challenge";
 import {
@@ -23,6 +24,7 @@ const Home: NextPage = () => {
   console.log("SET", selectedDate);
   return (
     <StyledMainPageContainer>
+      <AddChallengeButton />
       <MainPageTopRowContainer>
         <Image alt="ranking icon" src={rankingIcon.src} width={20} height={27} />
       </MainPageTopRowContainer>

@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { defaultFadeInVariants, staggerOne } from "styles/motions";
 
 import letter from "../../images/letter.svg";
+import Router from "next/router";
 
 const FormContainer = styled(motion.form)`
   padding: 53px 16px;
@@ -23,7 +24,10 @@ const BoxContainer = styled.div`
 `;
 
 export default function ReceivePage() {
-  const onClick = (e: any) => {};
+  const handleClick = (e: any) => {
+    e.preventDefault();
+    Router.push("/");
+  };
 
   return (
     <FormContainer variants={staggerOne} initial="initial" whileInView="animate" exit="exit">
@@ -37,7 +41,7 @@ export default function ReceivePage() {
         <Image alt={"letter"} src={letter} objectFit="scale-down" />
       </ImageContainer>
       <BoxContainer>
-        <BlueBox onClick={onClick} variants={defaultFadeInVariants}>
+        <BlueBox onClick={handleClick} variants={defaultFadeInVariants}>
           <p>초대링크 수락 하기</p>
         </BlueBox>
       </BoxContainer>

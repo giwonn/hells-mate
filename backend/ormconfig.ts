@@ -1,8 +1,9 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import * as dotenv from 'dotenv';
 dotenv.config();
-console.log(__dirname + '/src/database/entities/*.ts');
-const config: TypeOrmModuleOptions = {
+
+export const ormConfig: TypeOrmModuleOptions = {
+  driver: 'mysql',
   type: 'mysql',
   entities: [__dirname + '/src/database/entities/*.ts'],
   autoLoadEntities: true,
@@ -29,5 +30,3 @@ const config: TypeOrmModuleOptions = {
     ],
   },
 };
-
-export = config;

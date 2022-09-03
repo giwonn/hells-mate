@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
+import { motion } from "framer-motion";
 
-export const BoxStyle = styled.button`
+export const BoxStyle = styled(motion.button)`
   border-radius: 10px;
   border: none;
-  background-color: ${({theme}) => theme.color.primary700};
-  color: ${({theme}) => theme.color.white};
+  background-color: ${({ theme }) => theme.color.primary700};
+  color: ${({ theme }) => theme.color.white};
   width: 328px;
   height: 56px;
   margin-left: auto;
@@ -16,7 +17,6 @@ export const BoxStyle = styled.button`
   font-weight: 700;
 
   &:hover {
-    background-color: ${({theme}) => theme.color.blue400};
-  } 
+    background-color: ${({ theme }) => theme.color.blue400};
+  }
 `;
-

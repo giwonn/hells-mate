@@ -13,6 +13,8 @@ import rPolygon from "../../images/rPolygon.svg";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from "../styles/radio.module.css";
+import { staggerOne } from "styles/motions";
+import { motion } from "framer-motion";
 
 const Goback = styled.a`
   font-size: 20px;
@@ -51,7 +53,7 @@ export default function Mission() {
   const [val, setVal] = useState("");
   return (
     <>
-      <MobileLayout>
+      <motion.form variants={staggerOne} initial="initial" whileInView="animate" exit="exit">
         <MoveContainer>
           <Link href="/" passHref>
             <Goback>
@@ -126,7 +128,7 @@ export default function Mission() {
 
           {/* </Link> */}
         </form>
-      </MobileLayout>
+      </motion.form>
     </>
   );
 }

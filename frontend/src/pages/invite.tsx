@@ -7,8 +7,10 @@ import styled from "@emotion/styled";
 import { Title } from "../components/common/Description/";
 import Link from "next/link";
 import { ImageContainer, MoveContainer } from "components/common/Container";
+import { defaultFadeInVariants, staggerOne } from "styles/motions";
+import { motion } from "framer-motion";
 
-const Goback = styled.a`
+const Goback = styled(motion.a)`
   font-size: 20px;
 `;
 
@@ -41,34 +43,34 @@ export default function InvitePage() {
 
   return (
     <>
-      <MobileLayout>
+      <motion.form variants={staggerOne} initial="initial" whileInView="animate" exit="exit">
         <MoveContainer>
           <Link href="/groupInfo" passHref>
-            <Goback>
+            <Goback variants={defaultFadeInVariants}>
               <Image src={lPolygon} />
             </Goback>
           </Link>
-          <span>
+          <motion.span variants={defaultFadeInVariants}>
             <b>4</b> / 4
-          </span>
+          </motion.span>
         </MoveContainer>
-        <Title>
+        <Title variants={defaultFadeInVariants}>
           그룹에 대한
           <br />
           정보를 알려주세요.
         </Title>
-        <ImageContainer>
+        <ImageContainer variants={defaultFadeInVariants}>
           <Image src={letter} objectFit="scale-down" />
         </ImageContainer>
-        <BoxContainer>
-          <BlueBox onClick={onClick}>
+        <BoxContainer variants={defaultFadeInVariants}>
+          <BlueBox onClick={onClick} variants={defaultFadeInVariants}>
             <p>초대 링크 보내기</p>
           </BlueBox>
-          <ConfirmBox>
+          <ConfirmBox variants={defaultFadeInVariants}>
             <p>확인</p>
           </ConfirmBox>
         </BoxContainer>
-      </MobileLayout>
+      </motion.form>
     </>
   );
 }

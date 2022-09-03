@@ -1,13 +1,14 @@
-import styled from "@emotion/styled"
+import styled from "@emotion/styled";
+import { motion } from "framer-motion";
 
-export const ImageContainer = styled.div`
+export const ImageContainer = styled(motion.div)`
   width: 85%;
   display: flex;
   justify-content: center;
   position: relative;
   margin-right: 24px;
   top: 150px;
-`
+`;
 
 export const MoveContainer = styled.div`
   position: absolute;
@@ -25,4 +26,4 @@ export const MoveContainer = styled.div`
       font-weight: bold;
     }
   }
-`
+`;

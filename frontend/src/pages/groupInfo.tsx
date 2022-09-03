@@ -105,9 +105,9 @@ export default function GroupInfo() {
         />
         {/* <Link href='/thirdPage' passHref> */}
         <BlueGt onSubmit={onSubmit}>
-          <a>
+          <motion.a variants={defaultFadeInVariants}>
             <Image src={rPolygon} />
-          </a>
+          </motion.a>
         </BlueGt>
       </motion.form>
       {/* </Link> */}

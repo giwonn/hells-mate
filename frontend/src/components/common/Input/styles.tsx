@@ -44,4 +44,5 @@ export const StyledTextarea = styled(motion.textarea)`
   &::placeholder {
     color: #c9cee3;
   }
+  resize: none;
 `;

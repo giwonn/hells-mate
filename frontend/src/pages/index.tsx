@@ -13,6 +13,8 @@ import {
 import { useAxiosData } from "hooks/useAxiosData";
 
 import rankingIcon from "/public/icons/ranking_icon.svg";
+import AddChallengeButton from "components/pages/main/AddChallengeButton";
+import Router from "next/router";
 
 declare global {
   interface Window {
@@ -41,7 +43,14 @@ const Home: NextPage = () => {
         /> */}
         </BottomSheet>
         <StyledMainPageContainer>
-          {/* <AddChallengeButton /> */}
+          <AddChallengeButton
+            onClick={(e: any) => {
+              e.preventDefault();
+              Router.push("/create/1");
+            }}
+          >
+            +
+          </AddChallengeButton>
           <MainPageTopRowContainer>
             <Image alt="ranking icon" src={rankingIcon.src} width={20} height={27} />
           </MainPageTopRowContainer>

@@ -17,9 +17,7 @@ export const StyledAddChallengeButton = styled.button`
   /* left: 500px; */
   /* right: 16px;
   bottom: 32px; */
-  position: absolute;
-  /* right: calc(-100vw + 20px);
-   */
-  left: 10vw;
-  bottom: 0vh;
+  position: sticky;
+  top: 500px;
+  left: 300px;
 `;

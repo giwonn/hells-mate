@@ -4,7 +4,7 @@ import { StyledAddChallengeButton } from "components/pages/main/AddChallengeButt
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
 function AddChallengeButton({ children, ...props }: Props) {
-  return <StyledAddChallengeButton>{children}</StyledAddChallengeButton>;
+  return <StyledAddChallengeButton {...props}>{children}</StyledAddChallengeButton>;
 }
 
 export default AddChallengeButton;

@@ -6,4 +6,4 @@ import { AuthService } from '@/controller/auth/auth.service';
   controllers: [AuthController],
   providers: [AuthService],
 })
-export class GroupModule {}
+export class AuthModule {}

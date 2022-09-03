@@ -7,6 +7,6 @@ export class AuthController {
 
   @Get('kakao/callback')
   getKakaoToken(@Query('code') code: string) {
-    return this.userService;
+    console.log({ code });
   }
 }

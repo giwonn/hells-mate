@@ -4,7 +4,6 @@ import * as entities from './src/database/entities';
 
 export const ormConfig: TypeOrmModuleOptions = {
   type: 'mysql',
-  database: 'hellthmate',
   entities: Object.values(entities),
   autoLoadEntities: true,
   charset: 'utf8mb4',

@@ -15,13 +15,28 @@ export class UserController {
   }
 
   @Get('/kakao/callback')
-  async getAccessToken(@Query('code') code, @Res({ passthrough: true }) res) {
-    const accessToken = await this.userService.getAccessToken(code);
+  async kakaoLogin(@Query('code') code, @Res({ passthrough: true }) res) {
+    const kakaoToken = await this.userService.getKakaoToken(code);
+    const userInfo = await this.userService.getUserInfo(kakaoToken);
+
+    console.log({ userInfo });
+    const isExistUser = await this.userService.checkUser(userInfo.id);
+
+    if (!isExistUser) {
+      const createdUser = this.userService.register(userInfo);
+      return {
+        code: 201,
+        message: 'CREATED',
+        data: createdUser,
+      };
+    }
+
+    const accessToken = await this.userService.getAccessToken(userInfo);
 
     return {
       code: 200,
       message: 'OK',
-      date: { accessToken },
+      data: { accessToken },
     };
   }
 
@@ -29,8 +44,13 @@ export class UserController {
     summary: '로그인 api',
   })
   @Get('login')
-  login(@Req() req: any) {
-    const accessToken = req.headers.accesstoken;
-    return this.userService.login(accessToken);
+  async login(@Req() req: any) {
+    const accessToken = req.headers.authorization;
+    console.log(accessToken);
+    const { token } = await this.userService.decodeAccessToken(
+      accessToken.split(' ')[1],
+    );
+
+    return this.userService.login(token);
   }
 }

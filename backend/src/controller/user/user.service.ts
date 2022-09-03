@@ -23,7 +23,7 @@ export class UserService {
     return true;
   }
 
-  async login(token: string) {
+  async login(token) {
     const user = await this.userRepository.findOne({
       where: {
         token,
@@ -33,11 +33,11 @@ export class UserService {
     return {
       code: 200,
       message: '유저 조회 완료',
-      data: { user },
+      data: user,
     };
   }
 
-  async getAccessToken(code: string): Promise<string> {
+  async getKakaoToken(code: string): Promise<string> {
     const body = {
       grant_type: 'authorization_code',
       client_id: process.env.KAKAO_CLIENT_ID,
@@ -59,10 +59,10 @@ export class UserService {
     }
   }
 
-  async getUserInfo(accessToken: string) {
+  async getUserInfo(kakaoToken: string) {
     const headerUserInfo = {
       'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
-      Authorization: `Bearer ${accessToken}`,
+      Authorization: `Bearer ${kakaoToken}`,
     };
 
     const responseUserInfo = await axios({
@@ -81,16 +81,37 @@ export class UserService {
     return this.userRepository.findOne({ token });
   }
 
-  async register(data: any) {
+  async register(userInfo: any) {
     const user = new User();
-    user.token = data.id.toString();
-    if (data.properties) {
-      user.profile = data.properties?.profile_image ?? '';
-      user.nickname = data.properties?.nickname ?? '';
+    user.token = userInfo.id.toString();
+    if (userInfo.properties) {
+      user.profile = userInfo.properties?.profile_image ?? '';
+      user.nickname = userInfo.properties?.nickname ?? '';
     }
 
     const createdUser = await this.userRepository.save(user);
 
     return createdUser;
+  }
+
+  async getAccessToken(user: User) {
+    const payload = {
+      token: String(user.id),
+      nickname: user.nickname,
+      profile: user.profile,
+    };
+
+    return this.jwtService.sign(payload, {
+      secret: process.env.JWT_ACCESS_TOKEN_SECRET,
+      expiresIn: `${process.env.JWT_ACCESS_TOKEN_EXPIRATION_TIME}s`,
+    });
+  }
+
+  async decodeAccessToken(accessToken: string) {
+    return this.jwtService.decode(accessToken);
+  }
+
+  async checkUser(token) {
+    return this.userRepository.findOne({ token });
   }
 }

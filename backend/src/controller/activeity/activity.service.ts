@@ -33,7 +33,9 @@ export class ActivityService {
     //     GroupMissionDate: 1,
     //   },
     // });
+
     const points = [1, 3, 5];
+    const randomIndex = Math.floor(Math.random() * 3);
 
     const activity = {
       point: points[Math.floor(Math.random() * 3)],

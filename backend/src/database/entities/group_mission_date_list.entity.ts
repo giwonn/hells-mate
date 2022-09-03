@@ -25,6 +25,8 @@ export class GroupMissionDateList extends BaseEntity {
     () => MissionCategory,
     (missionCategory) => missionCategory.GroupMissionDateList,
   )
-  @JoinColumn([{ name: 'id', referencedColumnName: 'id' }])
+  @JoinColumn([
+    { name: 'mission_category_list_id', referencedColumnName: 'id' },
+  ])
   MissionCategory: MissionCategory;
 }

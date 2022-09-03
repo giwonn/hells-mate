@@ -3,6 +3,7 @@ import { GroupService } from './group.service';
 import { GroupController } from './group.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import {
+  Activity,
   Group,
   GroupMissionDate,
   GroupMissionDateList,
@@ -18,6 +19,7 @@ import {
       UserGroup,
       GroupMissionDate,
       GroupMissionDateList,
+      Activity,
     ]),
   ],
   controllers: [GroupController],

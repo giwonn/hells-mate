@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { createGroupDto } from '../dto/group.dto';
 import {
+  Activity,
   Group,
   GroupMissionDate,
   GroupMissionDateList,
@@ -32,6 +33,9 @@ export class GroupService {
 
     @InjectRepository(GroupMissionDate)
     private groupMissionDateRepository: Repository<GroupMissionDate>,
+
+    @InjectRepository(Activity)
+    private activityRepository: Repository<Activity>,
   ) {}
 
   async getUserById(userId: number): Promise<User> {
@@ -48,7 +52,7 @@ export class GroupService {
     group.content = data.content;
     group.startDate = '20220901';
     group.endDate = '20220907';
-    // const createdGroup = await this.groupRepository.save(group);
+    const createdGroup = await this.groupRepository.save(group);
 
     const userGroup = new UserGroup();
     userGroup.Group = group;
@@ -56,7 +60,7 @@ export class GroupService {
     user.id = userId;
     userGroup.User = user;
     userGroup.isAdmin = true;
-    // await this.userGroupRepository.save(userGroup);
+    await this.userGroupRepository.save(userGroup);
 
     const arr = [];
 
@@ -70,16 +74,39 @@ export class GroupService {
       date++;
     }
     console.log(arr);
-    // await this.groupMissionDateRepository.save(arr);
+    await this.groupMissionDateRepository.save(arr);
 
-    // return createdGroup;
+    return createdGroup;
+  }
+
+  async acceptGroup(userId: number, groupId: number) {
+    const userGroup = new UserGroup();
+    const user = new User();
+    user.id = userId;
+    userGroup.User = user;
+    const group = new Group();
+    group.id = groupId;
+    userGroup.Group = group;
+    await this.userGroupRepository.save(userGroup);
+
     return true;
   }
 
   async getGroupList(userId = 1): Promise<any> {
     const result: any = {};
 
-    const cnt = Math.ceil((Math.random()*3))
+    const user: any = await this.userRepository.findOne({
+      where: { id: userId },
+    });
+    const cnt = Math.ceil(Math.random() * 3);
+    const complete = await this.activityRepository
+      .createQueryBuilder('a')
+      .leftJoinAndSelect('a.User', 'user')
+      .leftJoinAndSelect('a.Group', 'group')
+      .where('user.id=:userId', { userId })
+      .getMany();
+
+    user.complete = false;
 
     const userGroupList = await this.groupRepository
       .createQueryBuilder('group')
@@ -87,25 +114,44 @@ export class GroupService {
       .orderBy('group.id', 'DESC')
       .getMany();
 
-    const nameList = ['김민주','박주형','김미소','이윤정','강소리','이우형','윈터','헬린이','이진형','이진명','서하서하','임기원','성용','건우']
-    const obj: any = [
-      {
-        name: ['김민주', '박주형', '이진명'],
-      },
-      { name: ['참가자', '권모술수', '이진형'] },
-      { name: ['윈터', '운동싫어'] },
+    const nameList = [
+      '김민주',
+      '박주형',
+      '김미소',
+      '이윤정',
+      '강소리',
+      '이우형',
+      '윈터',
+      '헬린이',
+      '이진형',
+      '이진명',
+      '임기원',
+      '성용',
+      '건우',
+      '길동',
+      '지수',
+      '차현우',
+      '민준',
+      '송희',
     ];
+
     const groupCategoryId: any = [1, 2, 1, 1];
+    let k = 0;
     result.group = userGroupList.map((x: any, i) => {
-      const cnt = Math.ceil(Math.random() * 4);
+      const cnt = Math.ceil(Math.random() * 5);
       let name = [];
+      ++k;
       for (let j = 0; j < cnt; j++) {
-        const cnt2 = Math.ceil(Math.ceil(Math.random() * 14));
-        name.push(nameList[cnt2]);
+        const cnt2 = Math.ceil(Math.ceil(Math.random() * 16));
+        name.push({
+          id: ++k,
+          nickname: nameList[cnt2],
+          complete: Math.random() < 0.5,
+        });
       }
-      x.name = name;
+      name[0] = user;
+      x.names = name;
       name = [];
-      x.User = obj[i];
       x.categoryId = groupCategoryId[i];
       return x;
     });

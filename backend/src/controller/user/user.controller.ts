@@ -1,18 +1,19 @@
 import {
   Controller,
-  Get,
   Post,
   Body,
 } from '@nestjs/common';
 import { UserService } from './user.service';
-import { CreateAuthDto } from './dto/create-auth.dto';
+import { KakaoApi } from '@/api'
 
 @Controller('user')
 export class UserController {
-  constructor(private readonly userService: UserService) {}
+  constructor(private readonly groupService: UserService) {}
 
   @Post()
-  create(@Body() createAuthDto: CreateAuthDto) {
-    return this.userService.validateUser(createAuthDto.email, createAuthDto.password);
+  async create(@Body() createAuthDto: unknown) {
+     await KakaoApi.login()
   }
+
+  @Post()
 }

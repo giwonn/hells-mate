@@ -1,10 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { CreateAuthDto } from './dto/create-auth.dto';
-import { UpdateAuthDto } from './dto/update-auth.dto';
 
 @Injectable()
 export class UserService {
-  async validateUser(email:string, password:string) {
+  async create(email:string, password:string) {
+
+
     return true;
+  }
+
+  async validateUser(email: string, password: string): Promise<any> {
+    
   }
 }

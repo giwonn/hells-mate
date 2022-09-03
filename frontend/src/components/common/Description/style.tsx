@@ -5,7 +5,6 @@ export const Title = styled(motion.h1)`
   font-size: 24px;
   font-weight: bold;
   color: ${({ theme }) => theme.color.black900};
-  margin-top: 92px;
   margin-left: 0;
 `;
 

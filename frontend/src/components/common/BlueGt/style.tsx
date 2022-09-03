@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 export const BlueGt = styled.div`
   width: 56px;
   height: 56px;
+  margin: 14px 0;
   border-radius: 50%;
   color: ${({ theme }) => theme.color.blue200};
   text-align: center;

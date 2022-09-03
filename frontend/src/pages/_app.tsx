@@ -4,6 +4,8 @@ import MobileLayout from "components/common/Layout/MobileLayout";
 import { GlobalStyles } from "styles/globalStyles";
 import { theme } from "styles/theme";
 
+import "styles/react-datepicker.css";
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>

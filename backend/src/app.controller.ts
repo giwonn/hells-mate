@@ -6,8 +6,16 @@ import { ApiOperation } from '@nestjs/swagger';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
-  getStart(): string {
-    return this.appService.getHello();
+  @Get('random-text')
+  @ApiOperation({
+    summary: '로딩 시 명언 불러오기 api',
+  })
+  async getStart(): Promise<any> {
+    const result = await this.appService.getHello();
+    return {
+      code: 200,
+      message: '명언 불러오기 성공',
+      data: result,
+    };
   }
 }

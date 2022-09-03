@@ -10,7 +10,7 @@ import {
 } from '@nestjs/common';
 import { MissionService } from './mission.service';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { createGroupDto } from './dto/mission.dto';
+import { createGroupDto, MissionDto } from '../dto/mission.dto';
 
 @Controller('mission')
 @ApiTags('mission')
@@ -18,15 +18,29 @@ export class MissionController {
   constructor(private readonly missionService: MissionService) {}
 
   @ApiOperation({
-    summary: '팀장이 그룹을 생성하는 api',
+    summary: '미션 카테고리를 불러오는 api',
   })
-  @Get()
-  async createGroup(@Req() req: any, @Body() data: createGroupDto) {
+  @Get('mission-category')
+  async selectMissionCategory(@Req() req: any) {
     req.user.id = 1;
-    const result = await this.missionService.createGroup(1, data);
+    const result = await this.missionService.selectMissionCategory();
     return {
       code: 200,
-      message: '그룹이 정상적으로 등록 되었습니다. ',
+      message: '미션카테고리 불러오기 완료',
+      data: result,
+    };
+  }
+
+  @ApiOperation({
+    summary: '날짜 별 미션 목록의 정보 보기',
+  })
+  @Get('')
+  async selectMissionList(@Req() req: any) {
+    req.user.id = 1;
+    const result = await this.missionService.selectMissionList();
+    return {
+      code: 200,
+      message: '미션 별 목록 정보 불러오기 완료',
       data: result,
     };
   }

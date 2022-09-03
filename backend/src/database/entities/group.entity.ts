@@ -11,6 +11,7 @@ import { User } from './user.entity';
 import { GroupMissionDate } from './group_mission_date.entity';
 import { Activity } from './activity.entity';
 import { UserGroup } from './user_group.entity';
+import { GroupMissionDateList } from './group_mission_date_list.entity';
 
 @Entity('group', { schema: 'hellthmate' })
 export class Group extends BaseEntity {
@@ -44,4 +45,10 @@ export class Group extends BaseEntity {
 
   @OneToMany(() => Activity, (activity) => activity.Group)
   Activity: Activity[];
+
+  @OneToOne(
+    () => GroupMissionDateList,
+    (groupMissionDateList) => groupMissionDateList.Group,
+  )
+  GroupMissionDateList: GroupMissionDateList;
 }

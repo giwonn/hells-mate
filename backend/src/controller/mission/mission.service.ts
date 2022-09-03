@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { createGroupDto } from './dto/mission.dto';
+import { createGroupDto, MissionDto } from '../dto/mission.dto';
 import { Connection, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Group } from '../../database/entities';
@@ -13,20 +13,13 @@ export class MissionService {
     private groupRepository: Repository<Group>,
   ) {}
 
-  async createGroup(userId: number, data: createGroupDto): Promise<Group> {
-    // getMany();
-    const getGroup = await this.groupRepository
-      .createQueryBuilder('group')
-      .where('group.id=:id', { id: 1 })
-      .getOne();
+  async selectMissionCategory() {
+    // 미션카테고리 불러오기
+    return null;
+  }
 
-    const group = new Group();
-    group.title = data.title;
-    group.content = data.description;
-    const createdGroup = await this.groupRepository.save(group);
-
-    await this.groupRepository.softDelete({ id: 2 });
-
-    return createdGroup;
+  async selectMissionList() {
+    // 날짜별 미션 불러오기
+    return null;
   }
 }

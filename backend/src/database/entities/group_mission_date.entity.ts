@@ -1,4 +1,5 @@
 import { Column, Entity, ManyToOne, OneToMany } from 'typeorm';
+import { Activity } from './activity.entity';
 import BaseEntity from './base.entity';
 import { Group } from './group.entity';
 import { GroupMissionDateList } from './group_mission_date_list.entity';
@@ -11,9 +12,6 @@ export class GroupMissionDate extends BaseEntity {
   @Column({ type: 'varchar', name: 'date', comment: '날짜' })
   date: Date;
 
-  @OneToMany(
-    () => GroupMissionDateList,
-    (groupMissionDateList) => groupMissionDateList.GroupMissionDate,
-  )
-  GroupMissionDateList: GroupMissionDateList[];
+  @OneToMany(() => Activity, (activity) => activity.GroupMissionDate)
+  Activity: Activity[];
 }

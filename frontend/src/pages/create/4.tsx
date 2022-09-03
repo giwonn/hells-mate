@@ -46,7 +46,7 @@ export default function InvitePage() {
       <MoveContainer>
         <Link href="/create/3" passHref>
           <Goback variants={defaultFadeInVariants}>
-            <Image src={lPolygon} />
+            <Image alt={"lPolygon"} src={lPolygon} />
           </Goback>
         </Link>
         <motion.span variants={defaultFadeInVariants}>
@@ -59,7 +59,7 @@ export default function InvitePage() {
         초대해주세요.
       </Title>
       <ImageContainer variants={defaultFadeInVariants}>
-        <Image src={letter} objectFit="scale-down" />
+        <Image alt={"letter"} src={letter} objectFit="scale-down" />
       </ImageContainer>
       <BoxContainer>
         <BlueBox onClick={onClick} variants={defaultFadeInVariants}>

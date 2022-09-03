@@ -4,7 +4,6 @@ import { defaultEasing } from "styles/motions";
 
 export const DimBackdrop = styled(motion.div)`
   position: fixed;
-  z-index: 10000;
   top: 0;
   left: 0;
 
@@ -20,13 +19,13 @@ export const ContentWrapper = styled(motion.div)`
   position: absolute;
   top: 100%;
   transform: translateY(-100%);
-  z-index: 1000;
 
   width: 100%;
   height: 190px;
 
   background-color: ${({ theme }) => theme.color.white};
-  border-radius: ${({ theme }) => theme.radius.lg} ${({ theme }) => theme.radius.lg}} 0 0;
+  border-top-left-radius: ${({ theme }) => theme.radius.lg};
+  border-top-right-radius: ${({ theme }) => theme.radius.lg};
 
   overflow-y: scroll;
 `;

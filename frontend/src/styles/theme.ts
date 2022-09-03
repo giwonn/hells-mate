@@ -19,4 +19,10 @@ export const theme: Theme = {
   paddings: {
     globalPadding: "16px",
   },
+  radius: {
+    lg: "20px",
+    md: "16px",
+    sm: "12px",
+    xs: "7px",
+  },
 };

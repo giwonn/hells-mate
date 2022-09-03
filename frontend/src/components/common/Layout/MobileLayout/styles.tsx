@@ -4,5 +4,5 @@ export const MobileLayout = styled.main`
   min-width: 360px;
   max-width: 400px;
   margin: 0 auto;
-  padding: ${({ theme }) => theme.paddings.globalPadding};
+  overflow-x: hidden;
 `;

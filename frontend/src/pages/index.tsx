@@ -1,13 +1,14 @@
-import MobileLayout from "components/common/Layout/MobileLayout";
 import type { NextPage } from "next";
 
+declare global {
+  interface Window {
+    Kakao: any;
+  }
+}
 const Home: NextPage = () => {
   return (
     <>
       <div>Hello World</div>
-      <MobileLayout>
-        fjdskal;djjkfdlsdjfasklfdsdsdsdsffd sjfsldkfdjskldfjskldjkdsl;fjdksla;fjdksl;
-      </MobileLayout>
     </>
   );
 };

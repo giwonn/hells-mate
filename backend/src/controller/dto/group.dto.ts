@@ -1,4 +1,10 @@
-import { IsDate, isNotEmpty, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import {
+  IsDate,
+  isNotEmpty,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+} from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class createGroupDto {
@@ -9,7 +15,7 @@ export class createGroupDto {
     description: '그룹 타이틀',
     required: true,
   })
-  public groupTitle: string;
+  public title: string;
 
   @IsString()
   @ApiProperty({
@@ -18,37 +24,25 @@ export class createGroupDto {
     description: '그룹 설명',
     required: true,
   })
-  public groupContent: string;
+  public content: string;
 
-  @IsNumber()
+  @IsString()
   @IsNotEmpty()
   @ApiProperty({
-    example:
-      'user Id',
-    description: '방장 유저 id',
-    required: true,
-  })
-  public adminId: number;
-
-  @IsDate()
-  @IsNotEmpty()
-  @ApiProperty({
-    example:
-      'Sat Sep 03 2022 20:43:44 GMT+0900 (KST)',
+    example: '20220901',
     description: '그룹 시작일',
     required: true,
   })
-  public startDate: Date;
+  public startDate: string;
 
-  @IsDate()
+  @IsString()
   @IsNotEmpty()
   @ApiProperty({
-    example:
-      'Sat Oct 02 2022 20:43:44 GMT+0900 (KST)',
+    example: '20220907',
     description: '그룹 종료일',
     required: true,
   })
-  public endDate: Date;
+  public endDate: string;
 
   @IsString()
   @IsNotEmpty()

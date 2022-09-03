@@ -38,17 +38,17 @@ export class GroupService {
     return user;
   }
 
-  async createGroup(userId: number, data: createGroupDto): Promise<Group> {
+  async createGroup(userId: number, data: createGroupDto): Promise<any> {
     const group = new Group();
-    group.title = data.groupTitle;
-    group.content = data.groupContent;
-    group.startDate = data.startDate;
-    group.endDate = data.endDate;
+    group.title = data.title;
+    group.content = data.content;
+    group.startDate = new Date(data.startDate);
+    group.endDate = new Date(data.endDate);
     const createdGroup = await this.groupRepository.save(group);
 
     const userGroup = new UserGroup();
-    userGroup.Group = [group];
-    userGroup.User = [await this.getUserById(userId)];
+    userGroup.Group = group;
+    userGroup.User = await this.getUserById(userId);
     userGroup.isAdmin = true;
     const createdUserGroup = await this.userGroupRepository.save(userGroup);
 

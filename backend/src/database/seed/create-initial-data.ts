@@ -124,98 +124,98 @@ export class CreateInitialData implements Seeder {
       ])
       .execute();
 
-    await connection
-      .createQueryBuilder()
-      .insert()
-      .into(UserGroup)
-      .values([
-        {
-          Group: [
-            {
-              id: 1,
-            },
-          ],
-          User: [
-            {
-              id: 1,
-            },
-          ],
-          isAdmin: true,
-        },
-        {
-          Group: [
-            {
-              id: 1,
-            },
-          ],
-          User: [
-            {
-              id: 2,
-            },
-          ],
-        },
-        {
-          Group: [
-            {
-              id: 1,
-            },
-          ],
-          User: [
-            {
-              id: 3,
-            },
-          ],
-        },
-        {
-          Group: [
-            {
-              id: 1,
-            },
-          ],
-          User: [
-            {
-              id: 4,
-            },
-          ],
-        },
-        {
-          Group: [
-            {
-              id: 1,
-            },
-          ],
-          User: [
-            {
-              id: 5,
-            },
-          ],
-        },
-        {
-          Group: [
-            {
-              id: 1,
-            },
-          ],
-          User: [
-            {
-              id: 6,
-            },
-          ],
-        },
-        {
-          Group: [
-            {
-              id: 1,
-            },
-          ],
-          User: [
-            {
-              id: 7,
-            },
-          ],
-        },
-      ])
-      .execute();
+    // await connection
+    //   .createQueryBuilder()
+    //   .insert()
+    //   .into(UserGroup)
+    //   .values([
+    //     {
+    //       Group: [
+    //         {
+    //           id: 1,
+    //         },
+    //       ],
+    //       User: [
+    //         {
+    //           id: 1,
+    //         },
+    //       ],
+    //       isAdmin: true,
+    //     },
+    //     {
+    //       Group: [
+    //         {
+    //           id: 1,
+    //         },
+    //       ],
+    //       User: [
+    //         {
+    //           id: 2,
+    //         },
+    //       ],
+    //     },
+    //     {
+    //       Group: [
+    //         {
+    //           id: 1,
+    //         },
+    //       ],
+    //       User: [
+    //         {
+    //           id: 3,
+    //         },
+    //       ],
+    //     },
+    //     {
+    //       Group: [
+    //         {
+    //           id: 1,
+    //         },
+    //       ],
+    //       User: [
+    //         {
+    //           id: 4,
+    //         },
+    //       ],
+    //     },
+    //     {
+    //       Group: [
+    //         {
+    //           id: 1,
+    //         },
+    //       ],
+    //       User: [
+    //         {
+    //           id: 5,
+    //         },
+    //       ],
+    //     },
+    //     {
+    //       Group: [
+    //         {
+    //           id: 1,
+    //         },
+    //       ],
+    //       User: [
+    //         {
+    //           id: 6,
+    //         },
+    //       ],
+    //     },
+    //     {
+    //       Group: [
+    //         {
+    //           id: 1,
+    //         },
+    //       ],
+    //       User: [
+    //         {
+    //           id: 7,
+    //         },
+    //       ],
+    //     },
+    //   ])
+    //   .execute();
 
     await connection
       .createQueryBuilder()

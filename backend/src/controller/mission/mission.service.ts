@@ -1,26 +1,30 @@
 import { Injectable } from '@nestjs/common';
-import { CreateMissionDto } from './dto/create-mission.dto';
-import { UpdateMissionDto } from './dto/update-mission.dto';
+import { createGroupDto } from './dto/mission.dto';
+import { Connection, Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Group } from '../../database/entities';
 
 @Injectable()
 export class MissionService {
-  create(createMissionDto: CreateMissionDto) {
-    return 'This action adds a new mission';
-  }
+  constructor(
+    private connection: Connection,
+    @InjectRepository(Group)
+    private groupRepository: Repository<Group>,
+  ) {}
 
-  findAll() {
-    return `This action returns all mission`;
-  }
+  async createGroup(data: createGroupDto): Promise<Group> {
+    const getGroup = await this.groupRepository
+      .createQueryBuilder('group')
+      .where('group.id=:id', { id: 1 })
+      .getOne();
 
-  findOne(id: number) {
-    return `This action returns a #${id} mission`;
-  }
+    const group = new Group();
+    group.title = data.title;
+    group.content = data.description;
+    const createdGroup = await this.groupRepository.save(group);
 
-  update(id: number, updateMissionDto: UpdateMissionDto) {
-    return `This action updates a #${id} mission`;
-  }
+    await this.groupRepository.softDelete({ id: 2 });
 
-  remove(id: number) {
-    return `This action removes a #${id} mission`;
+    return createdGroup;
   }
 }

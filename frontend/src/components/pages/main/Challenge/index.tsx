@@ -50,7 +50,7 @@ function Challenge({
         `}
       >
         <FlexContentIconColumn>
-          <Image alt="icon" src={category === "food" ? forkKinfeIcon : dumbbellIcon} />
+          <Image alt="icon" src={category == 1 ? forkKinfeIcon : dumbbellIcon} />
         </FlexContentIconColumn>
         <FlexSpaceBetweenContainer>
           <FlexContentInfoColumn
@@ -74,7 +74,7 @@ function Challenge({
 
             <Image
               alt="big dumbbell icon"
-              src={category === "food" ? foodIcon : bigDumbbellIcon}
+              src={category === 1 ? foodIcon : bigDumbbellIcon}
               width={90}
               height={90}
             />

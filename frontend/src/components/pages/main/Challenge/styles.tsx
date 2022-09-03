@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 interface StyleChallengeCategory {
-  category: "food" | "exercise";
+  category: number;
 }
 
 export const StyledChallenge = styled.div`
@@ -38,7 +38,7 @@ export const FlexLastColumn = styled.div`
 
 export const ChallengeRibbon = styled.div<StyleChallengeCategory>`
   background-color: ${({ theme, category }) =>
-    category === "food" ? theme.color.orange : theme.color.mint};
+    category === 1 ? theme.color.orange : theme.color.mint};
   width: 8px;
   height: 100%;
   border-radius: 10px 0 0 10px;

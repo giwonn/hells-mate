@@ -5,10 +5,9 @@ import {
   SelectorContainer,
   SelectorItemContainer,
 } from "components/pages/main/sections/MainPageBottomSheetSection/BottomSheetResultSelector/styles";
-import { Member } from "types/api";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
-  member: Member;
+  member: string;
   isOwner: boolean;
   checkStatusInfo: boolean[];
 }

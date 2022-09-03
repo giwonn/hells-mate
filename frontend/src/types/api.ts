@@ -7,8 +7,8 @@ export interface Member {
 export interface ChallengeType {
   challengeTitle: string;
   description: string;
-  category: "food" | "exercise";
-  members: Member[];
+  category: number;
+  members: string[];
 }
 
 export interface ApiResponse<T> {
@@ -27,4 +27,21 @@ export interface User {
   nickname: string;
   profile: string;
   token: string;
+}
+
+export interface Group {
+  group: {
+    id: number;
+    createdAt: Date;
+    updatedAt: Date;
+    deletedAt: Date;
+    title: string;
+    content: string;
+    token: string;
+    startDate: Date;
+    endDate: Date;
+    User: {
+      names: string[];
+    };
+  };
 }

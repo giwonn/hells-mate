@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/database/entities/user.entity';
 import { Connection, Repository } from 'typeorm';
-import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import axios from 'axios';
 
@@ -24,17 +23,17 @@ export class UserService {
     return true;
   }
 
-  async login(user: any) {
-    const accessToken = await this.getAccessToken(user);
+  async login(token: string) {
+    const user = await this.userRepository.findOne({
+      where: {
+        token,
+      },
+    });
 
     return {
-      result: true,
-      code: null,
-      data: {
-        idx: user.id,
-        nickname: user.nickname,
-        accessToken: accessToken,
-      },
+      code: 200,
+      message: '유저 조회 완료',
+      data: { user },
     };
   }
 
@@ -55,21 +54,9 @@ export class UserService {
       data: new URLSearchParams(body).toString(),
     });
 
-    // console.log(response);
-
     if (response.status === 200) {
-      const userInfo = await this.getUserInfo(response.data.access_token);
-      console.log('---');
-      console.log(userInfo);
-      console.log('---');
-      if (!userInfo) {
-        return;
-      }
-
-      return this.getAccessToken(userInfo);
+      return response.data.access_token;
     }
-
-    return;
   }
 
   async getUserInfo(accessToken: string) {

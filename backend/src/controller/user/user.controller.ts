@@ -1,17 +1,6 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Req,
-  UseGuards,
-  Redirect,
-  Query,
-  Res,
-} from '@nestjs/common';
+import { Controller, Get, Query, Req, Res, UseGuards } from '@nestjs/common';
 import { UserService } from './user.service';
-import { ApiTags } from '@nestjs/swagger';
-import { OptionalJwtAuthGuard } from '../../auth/optional-jwt-auth.guard';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../../auth/jwt-auth.guard';
 
 @Controller('user')
@@ -26,35 +15,22 @@ export class UserController {
   }
 
   @Get('/kakao/callback')
-  @Redirect()
-  async kakaoLogin(@Query('code') code, @Res({ passthrough: true }) res) {
+  async getAccessToken(@Query('code') code, @Res({ passthrough: true }) res) {
     const accessToken = await this.userService.getAccessToken(code);
 
-    console.log('-----');
-    console.log(accessToken);
-    console.log('-----');
-    return true;
-    // await axios.post(
-    //   `${process.env.FRONTEND_URL}/login`,
-    //   {},
-    //   {
-    //     headers: {
-    //       Authorization: accessToken,
-    //     },
-    //   },
-    // );
+    return {
+      code: 200,
+      message: 'OK',
+      date: { accessToken },
+    };
+  }
 
-    // const userInfo = await this.authService.getUserInfo(accessToken);
-    //
-    // const checkUser = await this.authService.search(userInfo.id.toString());
-    // if (!checkUser) {
-    //   const user = await this.authService.register(userInfo);
-    //   console.log(user);
-    // }
-    //
-    // // console.log(user);
-    //
-    // return { url: process.env.KAKAO_LOGIN_REDIRECT_URI };
-    return { url: 'http://localhost:3000' };
+  @ApiOperation({
+    summary: '로그인 api',
+  })
+  @Get('login')
+  login(@Req() req: any) {
+    const accessToken = req.headers.accesstoken;
+    return this.userService.login(accessToken);
   }
 }

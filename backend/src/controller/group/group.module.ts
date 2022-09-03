@@ -9,8 +9,6 @@ import {
   User,
   UserGroup,
 } from '../../database/entities';
-import { JwtModule } from '@nestjs/jwt';
-import { JwtStrategy } from '@/auth/jwt.strategy';
 
 @Module({
   imports: [

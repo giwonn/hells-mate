@@ -1,9 +1,4 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Req } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateAuthDto } from './dto/create-auth.dto';
 
@@ -11,8 +6,8 @@ import { CreateAuthDto } from './dto/create-auth.dto';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Post()
-  create(@Body() createAuthDto: CreateAuthDto) {
-    return this.userService.validateUser(createAuthDto.email, createAuthDto.password);
+  @Get()
+  create(@Req() req: any) {
+    return this.userService.test(req);
   }
 }

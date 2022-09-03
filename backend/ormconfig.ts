@@ -1,7 +1,7 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import * as dotenv from 'dotenv';
 dotenv.config();
-
+console.log(__dirname + '/src/database/entities/*.ts');
 const config: TypeOrmModuleOptions = {
   type: 'mysql',
   entities: [__dirname + '/src/database/entities/*.ts'],
@@ -20,7 +20,7 @@ const config: TypeOrmModuleOptions = {
     },
     slaves: [
       {
-        host: process.env.DB_SLAVE_HOST,
+        host: process.env.DB_MASTER_HOST,
         port: 3306,
         username: process.env.DB_USERNAME,
         password: process.env.DB_PASSWORD,

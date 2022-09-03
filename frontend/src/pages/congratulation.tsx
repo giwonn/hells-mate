@@ -20,9 +20,10 @@ const SubDescript = styled.p`
 `
 
 const ImageContainer = styled.div`
-  width: 205.01px;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
   position: relative;
+  margin-right: 24px;
   top: 57.89px;
 `
 

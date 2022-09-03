@@ -1,30 +1,35 @@
 import styled from "@emotion/styled";
-import {BoxStyle } from '../components/common/BlueBox'
+import { BoxStyle } from "../components/common/BlueBox";
 import MobileLayout from "../components/common/Layout/MobileLayout";
-import flag from '../../images/flag.svg'
+import flag from "../../images/flag.svg";
 import Image from "next/image";
 import Link from "next/link";
-import { Title, SubDescript } from '../components/common/Description/'
+import { Title, SubDescript } from "../components/common/Description/";
 import { ImageContainer } from "components/common/Container";
 
-const FlagContainer = styled(ImageContainer) `
+const FlagContainer = styled(ImageContainer)`
   top: 100px;
-`
+`;
 
 export default function Congratulation() {
-  return (<>
-    <MobileLayout>
-    <Title>수고하셨어요!</Title>
-    <SubDescript>미션 하나를 달성하셨어요!<br/>이대로 계속 달성해볼까요?</SubDescript>
-    <FlagContainer>
-      <Image src={flag} objectFit='scale-down' />
-    </FlagContainer>
-    <Link href='/home' passHref>
-      <BoxStyle>
-        <a>홈으로</a>
-      </BoxStyle>
-    </Link>
-    </MobileLayout>
-  </>)
+  return (
+    <>
+      <MobileLayout>
+        <Title>수고하셨어요!</Title>
+        <SubDescript>
+          미션 하나를 달성하셨어요!
+          <br />
+          이대로 계속 달성해볼까요?
+        </SubDescript>
+        <FlagContainer>
+          <Image src={flag} objectFit="scale-down" />
+        </FlagContainer>
+        <Link href="/home" passHref>
+          <BoxStyle>
+            <a>홈으로</a>
+          </BoxStyle>
+        </Link>
+      </MobileLayout>
+    </>
+  );
 }
-

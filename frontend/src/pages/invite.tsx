@@ -11,6 +11,31 @@ import { ImageContainer, MoveContainer } from "components/common/Container";
 const Goback = styled.a`
   font-size: 20px;
 `;
+
+const BlueBox = styled(BoxStyle)`
+  position: static;
+`;
+const ConfirmBox = styled(BoxStyle)`
+  position: static;
+  border: 1px solid ${({ theme }) => theme.color.primary700};
+  color: ${({ theme }) => theme.color.primary700};
+  background-color: ${({ theme }) => theme.color.white};
+  &:hover {
+    background-color: ${({ theme }) => theme.color.primary200};
+  }
+`;
+
+const BoxContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 120px;
+  justify-content: space-between;
+  float: left;
+  position: relative;
+  bottom: 10%;
+  position: absolute;
+`;
+
 export default function InvitePage() {
   const onClick = (e: any) => {};
 
@@ -24,7 +49,7 @@ export default function InvitePage() {
             </Goback>
           </Link>
           <span>
-            <b>3</b> / 3
+            <b>4</b> / 4
           </span>
         </MoveContainer>
         <Title>
@@ -35,9 +60,14 @@ export default function InvitePage() {
         <ImageContainer>
           <Image src={letter} objectFit="scale-down" />
         </ImageContainer>
-        <BoxStyle onClick={onClick}>
-          <p>초대 링크 보내기</p>
-        </BoxStyle>
+        <BoxContainer>
+          <BlueBox onClick={onClick}>
+            <p>초대 링크 보내기</p>
+          </BlueBox>
+          <ConfirmBox>
+            <p>확인</p>
+          </ConfirmBox>
+        </BoxContainer>
       </MobileLayout>
     </>
   );

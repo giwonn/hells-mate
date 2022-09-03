@@ -3,6 +3,7 @@ import {BoxStyle, BoxLabel } from '../components/common/BlueBox'
 import MobileLayout from "components/common/Layout/MobileLayout";
 import fighting from '../../images/fighting.svg'
 import Image from "next/image";
+import Link from "next/link";
 
 const MainDescript = styled.h1`
   font-size: 24px;
@@ -28,6 +29,7 @@ const ImageContainer = styled.div`
 `
 
 function Congratulation() {
+
   return (<>
     <MobileLayout>
     <MainDescript>축하합니다!</MainDescript>
@@ -35,9 +37,12 @@ function Congratulation() {
     <ImageContainer>
       <Image src={fighting} width='205.01px' height='131.27px' />
     </ImageContainer>
+    <Link href='/home'>
     <BoxStyle>
       <BoxLabel>홈으로</BoxLabel>
     </BoxStyle>
+    </Link>
+
     </MobileLayout>
 
   </>)

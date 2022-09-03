@@ -18,9 +18,9 @@ export class Group extends BaseEntity {
   @OneToMany(() => UserGroup, (userGroup) => userGroup.groupId)
   userGroupId: UserGroup;
 
-  @OneToOne(() => User, (user) => user.isAdmin)
+  @OneToOne(() => User, (user) => user.groupId)
   @JoinColumn()
-  userId: User;
+  adminId: User;
 
   @Column({ type: 'varchar', name: 'start_date', comment: '시작일' })
   startDate: Date;
@@ -28,9 +28,9 @@ export class Group extends BaseEntity {
   @Column({ type: 'varchar', name: 'end_date', comment: '종료일' })
   endDate: Date;
 
-  @OneToMany(() => GroupMissionDate, (groupMissionDate) => groupMissionDate.group_id)
+  @OneToMany(() => GroupMissionDate, (groupMissionDate) => groupMissionDate.groupId)
   groupMissionDateId: GroupMissionDate[];
 
-  @OneToMany(() => Activity, (activity) => activity.userId)
+  @OneToMany(() => Activity, (activity) => activity.groupId)
   activityId: Activity[];
 }

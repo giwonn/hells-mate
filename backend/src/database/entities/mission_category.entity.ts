@@ -7,6 +7,6 @@ export class MissionCategory extends BaseEntity {
   @Column({ type: 'varchar', name: 'name', comment: '미션 종류' })
   name: string;
   
-  @OneToOne(() => GroupMissionDayList, (mission) => mission.category)
-  mission: GroupMissionDayList;
+  @OneToOne(() => GroupMissionDayList, (mission) => mission.categoryId)
+  missionId: GroupMissionDayList;
 }

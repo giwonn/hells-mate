@@ -6,8 +6,8 @@ import { Activity } from './activity.entity';
 
 
 export class GroupMissionDayList extends BaseEntity {
-  @ManyToOne(() => GroupMissionDate, (date) => date.missionList)
-  groupMissionDate: GroupMissionDate;
+  @ManyToOne(() => GroupMissionDate, (date) => date.missionId)
+  groupMissionDateId: GroupMissionDate;
 
   @Column({ type: 'varchar', name: 'title', comment: '제목' })
   title: string;
@@ -15,9 +15,9 @@ export class GroupMissionDayList extends BaseEntity {
   @Column({ type: 'varchar', name: 'content', comment: '내용' })
   content: string;
 
-  @OneToOne(() => MissionCategory, (category) => category.mission)
+  @OneToOne(() => MissionCategory, (category) => category.missionId)
   @JoinColumn()
-  category: MissionCategory;
+  categoryId: MissionCategory;
 
   @OneToMany(() => Activity, (activity) => activity.missionId)
   activityId: Activity;

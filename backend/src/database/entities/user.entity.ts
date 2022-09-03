@@ -17,8 +17,8 @@ export class User extends BaseEntity {
   @ManyToOne(() => UserGroup, (userGroup) => userGroup.userId)
   userGroupId: UserGroup;
 
-  @OneToOne(() => Group, (group) => group.userId)
-  isAdmin: boolean;
+  @OneToOne(() => Group, (group) => group.adminId)
+  groupId: Group;
 
   @OneToMany(() => Activity, (activity) => activity.userId)
   activityId: Activity[];

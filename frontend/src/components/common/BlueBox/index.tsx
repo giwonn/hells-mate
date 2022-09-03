@@ -1,1 +1,1 @@
-export { BoxStyle, BoxLabel } from "components/common/BlueBox/style";
+export { BoxStyle } from "components/common/BlueBox/style";

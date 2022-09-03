@@ -16,24 +16,31 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   score: number;
   content: string;
   isChecked: boolean;
+  isOwner: boolean;
 }
 
-function BottomSheetResultSelectorItem({ score, content, isChecked, ...props }: Props) {
+function BottomSheetResultSelectorItem({ score, content, isChecked, isOwner, ...props }: Props) {
   return (
-    <StyledBottomSheetResultSelectorItem isChecked={isChecked} {...props}>
+    <StyledBottomSheetResultSelectorItem isOwner={isOwner} isChecked={isChecked} {...props}>
       <ContentFlexContainer>
         <TextFlexContainer>
-          <SelectorScoreText isChecked={isChecked}>+ {score} </SelectorScoreText>
-          <SelectorText isChecked={isChecked}>{content}</SelectorText>
+          <SelectorScoreText isOwner={isOwner} isChecked={isChecked}>
+            + {score}{" "}
+          </SelectorScoreText>
+          <SelectorText isOwner={isOwner} isChecked={isChecked}>
+            {content}
+          </SelectorText>
         </TextFlexContainer>
-        <CheckBoxIconFlexConatiner>
-          <Image
-            alt="checkbox"
-            src={isChecked ? checkedIcon.src : uncheckedIcon.src}
-            width={16}
-            height={16}
-          />
-        </CheckBoxIconFlexConatiner>
+        {isOwner && (
+          <CheckBoxIconFlexConatiner>
+            <Image
+              alt="checkbox"
+              src={isChecked ? checkedIcon.src : uncheckedIcon.src}
+              width={16}
+              height={16}
+            />
+          </CheckBoxIconFlexConatiner>
+        )}
       </ContentFlexContainer>
     </StyledBottomSheetResultSelectorItem>
   );

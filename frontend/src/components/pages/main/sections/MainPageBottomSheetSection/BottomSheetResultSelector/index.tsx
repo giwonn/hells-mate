@@ -9,38 +9,48 @@ import { Member } from "types/api";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   member: Member;
+  isOwner: boolean;
+  checkStatusInfo: boolean[];
 }
 
-function BottomSheetResultSelector({ member, ...props }: Props) {
-  const [checkStatus, setCheckStatus] = useState([false, false, false]);
-
+function BottomSheetResultSelector({ member, isOwner, checkStatusInfo, ...props }: Props) {
+  const [checkStatus, setCheckStatus] = useState(checkStatusInfo);
   return (
     <SelectorContainer>
-      <Profile member={member} />
+      <Profile member={member} checkStatusInfo={[false, true, false]} />
       <SelectorItemContainer>
         <BottomSheetResultSelectorItem
           score={5}
           content="완수보다 더 수행했어요!"
           isChecked={checkStatus[0]}
           onClick={() => {
-            setCheckStatus([true, false, false]);
+            if (isOwner) {
+              setCheckStatus([true, false, false]);
+            }
           }}
+          isOwner={isOwner}
         />
         <BottomSheetResultSelectorItem
           score={3}
           content="미션을 완수했어요. "
           isChecked={checkStatus[1]}
           onClick={() => {
-            setCheckStatus([false, true, false]);
+            if (isOwner) {
+              setCheckStatus([false, true, false]);
+            }
           }}
+          isOwner={isOwner}
         />
         <BottomSheetResultSelectorItem
           score={1}
           content="죄송해요, 다음엔 꼭 할게요"
           isChecked={checkStatus[2]}
           onClick={() => {
-            setCheckStatus([false, false, true]);
+            if (isOwner) {
+              setCheckStatus([false, false, true]);
+            }
           }}
+          isOwner={isOwner}
         />
       </SelectorItemContainer>
     </SelectorContainer>

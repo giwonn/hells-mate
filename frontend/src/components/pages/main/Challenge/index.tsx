@@ -35,12 +35,12 @@ function Challenge({
   onAreaClick,
   ...props
 }: Props) {
-  const onDeleteHandler = (e: React.MouseEvent<HTMLDivElement>) => {
+  const onAreaClickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target !== e.currentTarget) return;
     onAreaClick();
   };
   return (
-    <StyledChallenge {...props}>
+    <StyledChallenge onClick={onAreaClickHandler} {...props}>
       <FlexRibbonColumn>
         <ChallengeRibbon category={category} />
       </FlexRibbonColumn>

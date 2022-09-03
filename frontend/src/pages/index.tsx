@@ -26,7 +26,12 @@ const Home: NextPage = () => {
   const [isShowing, setIsShowing] = useState(false);
   return (
     <>
-      <BottomSheet isShowing={true} onClose={() => {}}>
+      <BottomSheet
+        isShowing={isShowing}
+        onClose={() => {
+          setIsShowing(false);
+        }}
+      >
         <MainPageBottomSheetSection member={MOCKUP_MEMBERS[0]} />
       </BottomSheet>
       <StyledMainPageContainer>

@@ -9,10 +9,12 @@ export const MOCKUP_CHALLENGES: ChallengeType[] = [
     category: "food",
     members: [
       {
+        id: 1,
         memberName: "김민주",
         profilesrc: profile1.src,
       },
       {
+        id: 2,
         memberName: "서희창",
         profilesrc: null,
       },
@@ -24,19 +26,13 @@ export const MOCKUP_CHALLENGES: ChallengeType[] = [
     category: "exercise",
     members: [
       {
+        id: 1,
         memberName: "김민주",
         profilesrc: profile1.src,
       },
       {
+        id: 2,
         memberName: "서희창",
-        profilesrc: null,
-      },
-      {
-        memberName: "이진명",
-        profilesrc: null,
-      },
-      {
-        memberName: "박주형",
         profilesrc: null,
       },
     ],
@@ -47,19 +43,23 @@ export const MOCKUP_CHALLENGES: ChallengeType[] = [
     category: "food",
     members: [
       {
-        memberName: "김민주",
-        profilesrc: profile1.src,
-      },
-      {
+        id: 2,
         memberName: "서희창",
         profilesrc: null,
       },
       {
-        memberName: "이진명",
+        id: 3,
+        memberName: "윤준상",
         profilesrc: null,
       },
       {
-        memberName: "박주형",
+        id: 4,
+        memberName: "김진희",
+        profilesrc: null,
+      },
+      {
+        id: 5,
+        memberName: "오이성",
         profilesrc: null,
       },
     ],

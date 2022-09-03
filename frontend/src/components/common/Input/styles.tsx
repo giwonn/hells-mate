@@ -1,12 +1,13 @@
 import styled from "@emotion/styled";
 import { boxStyle } from "components/common/Box";
+import { motion } from "framer-motion";
 
 export const InputContainer = styled.div`
   min-width: 100px;
   width: 100%;
 `;
 
-export const StyledInput = styled.input`
+export const StyledInput = styled(motion.input)`
   // 공통부분 (박스 테두리)
   ${boxStyle}
 

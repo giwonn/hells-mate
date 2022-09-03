@@ -16,7 +16,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 
 function DateCard({ dateCardTitle, dateCardContent, isToday, isSelected, ...props }: Props) {
   return (
-    <StyledDateCard isSelected={isSelected}>
+    <StyledDateCard isSelected={isSelected} {...props}>
       <DateCardTitleText isSelected={isSelected} isToday={isToday}>
         {dateCardTitle}
       </DateCardTitleText>

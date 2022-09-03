@@ -63,7 +63,7 @@ function Loading() {
   const [goodTextIndex, setGoodText] = useState<number>(0);
 
   useEffect(() => {
-    setGoodText(() => Math.floor(Math.random() * textList1.length));
+    setGoodText(() => Math.floor(Date.now() / 10000) % textList1.length);
     let bar = new ProgressBar.Path('#loadingHealth', {
       easing: 'easeInOut',
       duration: 1400

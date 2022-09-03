@@ -9,14 +9,22 @@ export class UserService {
     private connection: Connection,
 
     @InjectRepository(User)
-    private creditCardRepository: Repository<User>,
+    private userRepository: Repository<User>,
   ) {}
 
   async validateUser(email: string, password: string) {
     return true;
   }
   async test(req: any) {
-    const subs = await this.creditCardRepository.createQueryBuilder().getOne();
+    const subs = await this.userRepository.createQueryBuilder().getOne();
     return true;
+  }
+  async getUserById(userId: number) {
+    const user = await this.userRepository
+      .createQueryBuilder('user')
+      .where('user.id=:id', { id: userId })
+      .getOne();
+      
+    return user;
   }
 }

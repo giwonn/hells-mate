@@ -19,6 +19,7 @@ import { RankModule } from './controller/rank/rank.module';
   imports: [
     UserModule,
     MissionModule,
+    GroupModule,
     TypeOrmModule.forFeature([]),
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot(ormConfig),

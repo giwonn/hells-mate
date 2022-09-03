@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
 import Image from "next/image";
+import styled from "@emotion/styled";
 
 export const StyledProfile = styled.div`
   display: flex;

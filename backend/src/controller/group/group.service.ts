@@ -48,7 +48,7 @@ export class GroupService {
     group.content = data.content;
     group.startDate = '20220901';
     group.endDate = '20220907';
-    // const createdGroup = await this.groupRepository.save(group);
+    const createdGroup = await this.groupRepository.save(group);
 
     const userGroup = new UserGroup();
     userGroup.Group = group;
@@ -56,7 +56,7 @@ export class GroupService {
     user.id = userId;
     userGroup.User = user;
     userGroup.isAdmin = true;
-    // await this.userGroupRepository.save(userGroup);
+    await this.userGroupRepository.save(userGroup);
 
     const arr = [];
 
@@ -70,10 +70,9 @@ export class GroupService {
       date++;
     }
     console.log(arr);
-    // await this.groupMissionDateRepository.save(arr);
+    await this.groupMissionDateRepository.save(arr);
 
-    // return createdGroup;
-    return true;
+    return createdGroup;
   }
 
   async getGroupList(userId = 1): Promise<any> {

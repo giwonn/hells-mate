@@ -40,9 +40,16 @@ function Challenge({ challengeTitle, description, members, category, ...props }:
           <Image alt="icon" src={category === "food" ? forkKinfeIcon : dumbbellIcon} />
         </FlexContentIconColumn>
         <FlexSpaceBetweenContainer>
-          <FlexContentInfoColumn>
-            <ChallengeTitleText>{challengeTitle}</ChallengeTitleText>
-            <ChallengeDescriptionText>{description}</ChallengeDescriptionText>
+          <FlexContentInfoColumn
+            css={css`
+              flex-grow: 1;
+              justify-content: space-between;
+            `}
+          >
+            <div>
+              <ChallengeTitleText>{challengeTitle}</ChallengeTitleText>
+              <ChallengeDescriptionText>{description}</ChallengeDescriptionText>
+            </div>
             <ChallengeProfile members={members} />
           </FlexContentInfoColumn>
           <FlexLastColumn>

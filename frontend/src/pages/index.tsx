@@ -57,7 +57,7 @@ const Home: NextPage = () => {
                 key={index}
                 challengeTitle={groupItem.title}
                 description={groupItem.content}
-                members={groupItem.User.name}
+                members={groupItem.names}
                 category={groupItem.categoryId}
               />
             ))}

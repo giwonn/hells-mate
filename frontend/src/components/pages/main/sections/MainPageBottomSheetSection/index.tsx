@@ -2,22 +2,39 @@ import { HTMLAttributes } from "react";
 import { css } from "@emotion/react";
 import Button from "components/common/Button";
 import BottomSheetResultSelector from "components/pages/main/sections/MainPageBottomSheetSection/BottomSheetResultSelector";
-import { MOCKUP_CHALLENGES } from "mockups/challenges";
+import { Member } from "types/api";
 
 import { FlexColumnContainer } from "./styles";
 import BottomSheetChallenge from "./BottomSheetChallenge/index";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
-  member: string;
-  currentUser: string;
+  member: Member;
+  currentUser: Member;
   checkStatusInfo: boolean[];
+  challengeTitle: string;
+  description: string;
 }
 
-function MainPageBottomSheetSection({ member, currentUser, checkStatusInfo, ...props }: Props) {
+function MainPageBottomSheetSection({
+  member,
+  currentUser,
+  checkStatusInfo,
+  challengeTitle,
+  description,
+  ...props
+}: Props) {
   return (
     <FlexColumnContainer>
-      <BottomSheetChallenge {...MOCKUP_CHALLENGES[0]} onAreaClick={() => {}} />
-      <BottomSheetResultSelector member={member} isOwner={true} checkStatusInfo={checkStatusInfo} />
+      <BottomSheetChallenge
+        challengeTitle={challengeTitle}
+        description={description}
+        onAreaClick={() => {}}
+      />
+      <BottomSheetResultSelector
+        member={member.nickname}
+        isOwner={member.id === currentUser.id}
+        checkStatusInfo={checkStatusInfo}
+      />
       <Button
         css={css`
           margin-bottom: 35px;

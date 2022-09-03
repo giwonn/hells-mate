@@ -5,12 +5,15 @@ import {
   ChallengeProfileMoreButtonText,
   StyledChallengeProfile,
 } from "components/pages/main/Challenge/ChallengeProfile/styles";
+import { Member } from "types/api";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
-  members: string[];
+  members: Member[];
+  challengeTitle: string;
+  description: string;
 }
 
-function ChallengeProfile({ members, ...props }: Props) {
+function ChallengeProfile({ members, challengeTitle, description, ...props }: Props) {
   const [processedMembers, setProcessedMembers] = useState(
     members?.length > 3 ? members.slice(0, 2) : members
   );
@@ -24,7 +27,13 @@ function ChallengeProfile({ members, ...props }: Props) {
   return (
     <StyledChallengeProfile {...props}>
       {processedMembers.map((member, index) => (
-        <Profile member={member} key={index} checkStatusInfo={[true, false, false]} />
+        <Profile
+          challengeTitle={challengeTitle}
+          description={description}
+          member={member}
+          key={index}
+          checkStatusInfo={[true, false, false]}
+        />
       ))}
       {isMoreButton && (
         <ChallengeProfileMoreButton>

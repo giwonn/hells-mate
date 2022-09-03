@@ -2,19 +2,16 @@ import React, { HTMLAttributes } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { css } from "@emotion/react";
-import ChallengeProfile from "components/pages/main/Challenge/ChallengeProfile";
 import {
   ChallengeDescriptionText,
-  ChallengeRibbon,
   ChallengeTitleText,
   FlexContentColumn,
   FlexContentIconColumn,
   FlexContentInfoColumn,
   FlexLastColumn,
-  FlexRibbonColumn,
   FlexSpaceBetweenContainer,
   StyledChallenge,
-} from "components/pages/main/Challenge/styles";
+} from "components/pages/main/sections/MainPageBottomSheetSection/BottomSheetChallenge/styles";
 import { ChallengeType } from "types/api";
 
 import dumbbellIcon from "/public/images/dumbbellIcon.svg";
@@ -27,7 +24,7 @@ interface Props extends HTMLAttributes<HTMLDivElement>, ChallengeType {
   onAreaClick: () => void;
 }
 
-function Challenge({
+function BottomSheetChallenge({
   challengeTitle,
   description,
   members,
@@ -35,22 +32,19 @@ function Challenge({
   onAreaClick,
   ...props
 }: Props) {
-  const onAreaClickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
+  const onDeleteHandler = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target !== e.currentTarget) return;
     onAreaClick();
   };
   return (
-    <StyledChallenge onClick={onAreaClickHandler} {...props}>
-      <FlexRibbonColumn>
-        <ChallengeRibbon category={category} />
-      </FlexRibbonColumn>
+    <StyledChallenge {...props}>
       <FlexContentColumn
         css={css`
           flex-grow: 1;
         `}
       >
         <FlexContentIconColumn>
-          <Image alt="icon" src={category == 1 ? forkKinfeIcon : dumbbellIcon} />
+          <Image alt="icon" src={category === 1 ? forkKinfeIcon : dumbbellIcon} />
         </FlexContentIconColumn>
         <FlexSpaceBetweenContainer>
           <FlexContentInfoColumn
@@ -63,11 +57,6 @@ function Challenge({
               <ChallengeTitleText>{challengeTitle}</ChallengeTitleText>
               <ChallengeDescriptionText>{description}</ChallengeDescriptionText>
             </div>
-            <ChallengeProfile
-              members={members}
-              challengeTitle={challengeTitle}
-              description={description}
-            />
           </FlexContentInfoColumn>
           <FlexLastColumn>
             <Link href="#" passHref>
@@ -89,4 +78,4 @@ function Challenge({
   );
 }
 
-export default Challenge;
+export default BottomSheetChallenge;

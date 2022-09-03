@@ -1,28 +1,30 @@
-import styled from "@emotion/styled"
+import styled from "@emotion/styled";
+import { motion } from "framer-motion";
 
-export const ImageContainer = styled.div`
-  width: 85%;
+export const ImageContainer = styled(motion.div)`
   display: flex;
+  align-items: center;
   justify-content: center;
-  position: relative;
-  margin-right: 24px;
-  top: 150px;
-`
 
-export const MoveContainer = styled.div`
-  position: absolute;
+  height: 60vh;
+`;
+
+export const MoveContainer = styled(motion.div)`
   width: 60px;
   height: 30px;
+  margin-bottom: 22px;
   display: flex;
   justify-content: space-between;
-  top: 7%;
+
+  a {
+    margin-right: 10px;
+  }
 
   span {
-    margin-left: 10px;
     line-height: 30px;
 
     b {
       font-weight: bold;
     }
   }
-`
+`;

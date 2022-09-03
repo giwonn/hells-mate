@@ -15,19 +15,21 @@ const ImageContainer = styled.div`
 `
 
 export default function Congratulation() {
-  return (<>
-    <MobileLayout>
-    <Title>축하합니다!</Title>
-    <SubDescript>전체 미션을 모두<br/>달성하셨어요!</SubDescript>
-    <ImageContainer>
-      <Image src={fighting} objectFit='scale-down' />
-    </ImageContainer>
-    <Link href='/home' passHref>
-      <BoxStyle>
-        <a>홈으로</a>
-      </BoxStyle>
-    </Link>
-    </MobileLayout>
-  </>)
+  return (
+    <>
+      <MobileLayout>
+      <Title>축하합니다!</Title>
+      <SubDescript>전체 미션을 모두<br/>달성하셨어요!</SubDescript>
+      <ImageContainer>
+        <Image src={fighting} objectFit='scale-down' />
+      </ImageContainer>
+      <Link href='/home' passHref>
+        <a>
+          <BoxStyle>홈으로</BoxStyle>
+        </a>
+      </Link>
+      </MobileLayout>
+    </>
+  )
 }
 

@@ -38,7 +38,7 @@ const RadioContainer = styled(motion.div)`
   margin-top: 20px;
 `;
 
-export default function Mission() {
+export default function SetMission() {
   const [mission, setMission] = useState("");
   const [aboutMission, setAboutMission] = useState("");
 

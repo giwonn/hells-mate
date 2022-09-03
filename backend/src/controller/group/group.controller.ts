@@ -65,17 +65,10 @@ export class GroupController {
     };
   }
 
-  // @ApiOperation({
-  //   summary: '해당 그룹의 참여도 통계 불러오기',
-  // })
-  // // url 뭐로할지 고민이에요 아무거나 해주세요
-  // @Get(':groupId/측정')
-  // async select참여도(@Req() req: any, @Param('groupId') groupId: number) {
-  //   const result = await this.groupService.select참여도(groupId);
-  //   return {
-  //     code: 200,
-  //     message: '참여도 통계 보기',
-  //     data: result,
-  //   };
-  // }
+  @Get(':groupId/invite')
+  async invite(@Req() req: any, @Param('groupId') groupId: number) {
+    console.log('-----');
+    const inviteUrl = await this.groupService.createInviteUrl(groupId);
+    return req;
+  }
 }

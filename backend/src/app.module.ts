@@ -14,6 +14,7 @@ import { MissionModule } from './controller/mission/mission.module';
 import { GroupModule } from './controller/group/group.module';
 import { ActivityModule } from './controller/activeity/activity.module';
 import { RankModule } from './controller/rank/rank.module';
+import { AuthModule } from '@/controller/auth/auth.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { RankModule } from './controller/rank/rank.module';
     ActivityModule,
     RankModule,
     UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

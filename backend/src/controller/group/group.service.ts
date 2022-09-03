@@ -1,14 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { createGroupDto } from '../dto/group.dto';
-import { Group, GroupMissionDate, GroupMissionDateList, MissionCategory, User, UserGroup } from '../../database/entities';
+import {
+  Group,
+  GroupMissionDate,
+  GroupMissionDateList,
+  MissionCategory,
+  User,
+  UserGroup,
+} from '../../database/entities';
 import { Connection, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class GroupService {
   constructor(
     private connection: Connection,
-
+    private jwtService: JwtService,
     @InjectRepository(User)
     private userRepository: Repository<User>,
 
@@ -19,10 +27,7 @@ export class GroupService {
     private userGroupRepository: Repository<UserGroup>,
 
     @InjectRepository(GroupMissionDateList)
-    private groupMissionDateListRepository: Repository<GroupMissionDateList>,
-
-    // @InjectRepository(User)
-    // private groupMissionDateListRepository: Repository<GroupMissionDateList>,
+    private groupMissionDateListRepository: Repository<GroupMissionDateList>, // @InjectRepository(User) // private groupMissionDateListRepository: Repository<GroupMissionDateList>,
   ) {}
 
   async getUserById(userId: number): Promise<User> {
@@ -40,7 +45,7 @@ export class GroupService {
     group.startDate = data.startDate;
     group.endDate = data.endDate;
     const createdGroup = await this.groupRepository.save(group);
-    
+
     const userGroup = new UserGroup();
     userGroup.Group = group;
     userGroup.User = await this.getUserById(userId);
@@ -51,11 +56,12 @@ export class GroupService {
     groupMission.Group = group;
     groupMission.title = data.missionTitle;
     groupMission.content = data.missionContent;
-    const createdMission = await this.groupMissionDateListRepository.save(groupMission);
-    
+    const createdMission = await this.groupMissionDateListRepository.save(
+      groupMission,
+    );
+
     //check createdUserGroup and createdMission is valid before return then ->
     return createdGroup;
-
 
     // const getGroup = await this.groupRepository
     //   .createQueryBuilder('group')
@@ -67,12 +73,12 @@ export class GroupService {
     return createdGroup;
   }
 
-
-
-  async getJoinedGroupList(userId: number): Promise<{ group: Promise<Group>; isAdmin: boolean; }[]> {
+  async getJoinedGroupList(
+    userId: number,
+  ): Promise<{ group: Promise<Group>; isAdmin: boolean }[]> {
     const userGroupList = await this.userGroupRepository
       .createQueryBuilder('user_group')
-      .leftJoinAndSelect('user_group.User','user')
+      .leftJoinAndSelect('user_group.User', 'user')
       .where('user_group.id=:userId', { user: userId })
       .getMany();
     console.log(userGroupList);
@@ -81,13 +87,13 @@ export class GroupService {
         const group = this.groupRepository
           .createQueryBuilder('group')
           .where('group.UserGroup=:userGroup', { userGroup: userGroup })
-          .getOne()
+          .getOne();
         return {
-          group: group, 
+          group: group,
           isAdmin: userGroup.isAdmin,
         };
-      })
-    )
+      }),
+    );
     return groupList;
   }
 
@@ -99,9 +105,24 @@ export class GroupService {
     return group;
   }
 
+  async createInviteUrl(groupId: number) {
+    const group = await this.groupRepository.findOne({
+      where: { id: groupId },
+    });
+
+    const payload = {
+      token: group.token,
+    };
+
+    const token = await this.jwtService.sign(payload, {
+      secret: process.env.JWT_ACCESS_TOKEN_SECRET,
+      expiresIn: `${process.env.JWT_ACCESS_TOKEN_EXPIRATION_TIME}s`,
+    });
+
+    return token;
+  }
 
   // async getDatePage(group: )
-
 
   // async select참여도(groupId: number) {
   //   // 참여도 통계 보기

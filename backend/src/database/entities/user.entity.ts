@@ -15,12 +15,9 @@ export class User extends BaseEntity {
   @Column({ type: 'varchar', name: 'token', comment: '카카오톡 OAuth 토큰' })
   token: string;
 
-  @ManyToOne(() => UserGroup, (userGroup) => userGroup.userId)
-  userGroupId: UserGroup;
+  @OneToMany(() => UserGroup, (userGroup) => userGroup.User)
+  UserGroup: UserGroup[];
 
-  @OneToOne(() => Group, (group) => group.adminId)
-  groupId: Group;
-
-  @OneToMany(() => Activity, (activity) => activity.userId)
-  userActivityId: Activity[];
+  @OneToMany(() => Activity, (activity) => activity.User)
+  Activity: Activity[];
 }

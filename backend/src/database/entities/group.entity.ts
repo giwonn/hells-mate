@@ -27,25 +27,21 @@ export class Group extends BaseEntity {
   })
   token: string;
 
-  @OneToMany(() => UserGroup, (userGroup) => userGroup.groupId)
-  userGroupId: UserGroup[];
+  @OneToMany(() => UserGroup, (userGroup) => userGroup.Group)
+  UserGroup: UserGroup[];
 
-  @OneToOne(() => User, (user) => user.groupId)
-  @JoinColumn()
-  adminId: User;
-
-  @Column({ type: 'varchar', name: 'start_date', comment: '시작일' })
+  @Column({ type: 'datetime', name: 'start_date', comment: '시작일' })
   startDate: Date;
 
-  @Column({ type: 'varchar', name: 'end_date', comment: '종료일' })
+  @Column({ type: 'datetime', name: 'end_date', comment: '종료일' })
   endDate: Date;
 
   @OneToMany(
     () => GroupMissionDate,
-    (groupMissionDate) => groupMissionDate.groupId,
+    (groupMissionDate) => groupMissionDate.Group,
   )
-  groupMissionDateId: GroupMissionDate[];
+  GroupMissionDate: GroupMissionDate[];
 
-  @OneToMany(() => Activity, (activity) => activity.groupId)
-  userActivityId: Activity[];
+  @OneToMany(() => Activity, (activity) => activity.Group)
+  Activity: Activity[];
 }

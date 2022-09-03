@@ -409,5 +409,291 @@ export class CreateInitialData implements Seeder {
         },
       ])
       .execute();
+
+    // await connection
+    //   .createQueryBuilder()
+    //   .insert()
+    //   .into(UserGroup)
+    //   .values([
+    //     {
+    //       Group: [
+    //         {
+    //           id: 1,
+    //         },
+    //       ],
+    //       User: [
+    //         {
+    //           id: 1,
+    //         },
+    //       ],
+    //       isAdmin: true,
+    //     },
+    //     {
+    //       Group: [
+    //         {
+    //           id: 1,
+    //         },
+    //       ],
+    //       User: [
+    //         {
+    //           id: 2,
+    //         },
+    //       ],
+    //     },
+    //     {
+    //       Group: [
+    //         {
+    //           id: 1,
+    //         },
+    //       ],
+    //       User: [
+    //         {
+    //           id: 3,
+    //         },
+    //       ],
+    //     },
+    //     {
+    //       Group: [
+    //         {
+    //           id: 1,
+    //         },
+    //       ],
+    //       User: [
+    //         {
+    //           id: 4,
+    //         },
+    //       ],
+    //     },
+    //     {
+    //       Group: [
+    //         {
+    //           id: 1,
+    //         },
+    //       ],
+    //       User: [
+    //         {
+    //           id: 5,
+    //         },
+    //       ],
+    //     },
+    //     {
+    //       Group: [
+    //         {
+    //           id: 1,
+    //         },
+    //       ],
+    //       User: [
+    //         {
+    //           id: 6,
+    //         },
+    //       ],
+    //     },
+    //     {
+    //       Group: [
+    //         {
+    //           id: 1,
+    //         },
+    //       ],
+    //       User: [
+    //         {
+    //           id: 7,
+    //         },
+    //       ],
+    //     },
+    //   ])
+    //   .execute();
+
+    await connection
+      .createQueryBuilder()
+      .insert()
+      .into(GroupMissionDateList)
+      .values([
+        {
+          id: 1,
+          MissionCategory: { id: 2 },
+          Group: { id: 1 },
+          title:
+            '출근 사무실(or 집 아파트계단) 시 엘리베이터 타지말고 계단이용 가보자고~~🏃🏻‍♀️',
+          content: '인간적으로 5층 이상은 가자',
+        },
+      ])
+      .execute();
+
+    await connection
+      .createQueryBuilder()
+      .insert()
+      .into(Activity)
+      .values([
+        {
+          id: 1,
+          User: { id: 2 },
+          Group: { id: 1 },
+          GroupMissionDate: { id: 1 },
+          point: 3,
+        },
+        {
+          id: 2,
+          User: { id: 2 },
+          Group: { id: 1 },
+          GroupMissionDate: { id: 2 },
+          point: 5,
+        },
+        {
+          id: 1,
+          User: { id: 2 },
+          Group: { id: 1 },
+          GroupMissionDate: { id: 3 },
+          point: 3,
+        },
+        {
+          id: 1,
+          User: { id: 2 },
+          Group: { id: 1 },
+          GroupMissionDate: { id: 4 },
+          point: 3,
+        },
+        {
+          id: 1,
+          User: { id: 3 },
+          Group: { id: 1 },
+          GroupMissionDate: { id: 1 },
+          point: 5,
+        },
+        {
+          id: 1,
+          User: { id: 2 },
+          Group: { id: 1 },
+          GroupMissionDate: { id: 2 },
+          point: 5,
+        },
+        {
+          id: 1,
+          User: { id: 2 },
+          Group: { id: 1 },
+          GroupMissionDate: { id: 3 },
+          point: 5,
+        },
+        {
+          id: 1,
+          User: { id: 2 },
+          Group: { id: 1 },
+          GroupMissionDate: { id: 4 },
+          point: 5,
+        },
+        {
+          id: 1,
+          User: { id: 2 },
+          Group: { id: 1 },
+          GroupMissionDate: { id: 5 },
+          point: 5,
+        },
+        {
+          id: 1,
+          User: { id: 3 },
+          Group: { id: 1 },
+          GroupMissionDate: { id: 2 },
+          point: 1,
+        },
+        {
+          id: 1,
+          User: { id: 3 },
+          Group: { id: 1 },
+          GroupMissionDate: { id: 3 },
+          point: 1,
+        },
+        {
+          id: 1,
+          User: { id: 4 },
+          Group: { id: 1 },
+          GroupMissionDate: { id: 1 },
+          point: 3,
+        },
+        {
+          id: 1,
+          User: { id: 4 },
+          Group: { id: 1 },
+          GroupMissionDate: { id: 2 },
+          point: 3,
+        },
+        {
+          id: 1,
+          User: { id: 4 },
+          Group: { id: 1 },
+          GroupMissionDate: { id: 3 },
+          point: 5,
+        },
+        {
+          id: 1,
+          User: { id: 4 },
+          Group: { id: 1 },
+          GroupMissionDate: { id: 4 },
+          point: 5,
+        },
+        {
+          id: 1,
+          User: { id: 5 },
+          Group: { id: 1 },
+          GroupMissionDate: { id: 2 },
+          point: 3,
+        },
+        {
+          id: 1,
+          User: { id: 5 },
+          Group: { id: 1 },
+          GroupMissionDate: { id: 4 },
+          point: 1,
+        },
+
+        {
+          id: 1,
+          User: { id: 6 },
+          Group: { id: 1 },
+          GroupMissionDate: { id: 1 },
+          point: 5,
+        },
+        {
+          id: 1,
+          User: { id: 6 },
+          Group: { id: 1 },
+          GroupMissionDate: { id: 2 },
+          point: 5,
+        },
+        {
+          id: 1,
+          User: { id: 6 },
+          Group: { id: 1 },
+          GroupMissionDate: { id: 3 },
+          point: 5,
+        },
+        {
+          id: 1,
+          User: { id: 6 },
+          Group: { id: 1 },
+          GroupMissionDate: { id: 4 },
+          point: 5,
+        },
+        {
+          id: 1,
+          User: { id: 7 },
+          Group: { id: 1 },
+          GroupMissionDate: { id: 1 },
+          point: 5,
+        },
+        {
+          id: 1,
+          User: { id: 7 },
+          Group: { id: 1 },
+          GroupMissionDate: { id: 2 },
+          point: 5,
+        },
+        {
+          id: 1,
+          User: { id: 7 },
+          Group: { id: 1 },
+          GroupMissionDate: { id: 5 },
+          point: 3,
+        },
+      ])
+      .execute();
   }
 }

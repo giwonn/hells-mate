@@ -11,6 +11,7 @@ import {
 import { Connection, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { JwtService } from '@nestjs/jwt';
+import moment from 'moment';
 
 @Injectable()
 export class GroupService {
@@ -27,7 +28,10 @@ export class GroupService {
     private userGroupRepository: Repository<UserGroup>,
 
     @InjectRepository(GroupMissionDateList)
-    private groupMissionDateListRepository: Repository<GroupMissionDateList>, // @InjectRepository(User) // private groupMissionDateListRepository: Repository<GroupMissionDateList>,
+    private groupMissionDateListRepository: Repository<GroupMissionDateList>,
+
+    @InjectRepository(GroupMissionDate)
+    private groupMissionDateRepository: Repository<GroupMissionDate>,
   ) {}
 
   async getUserById(userId: number): Promise<User> {
@@ -42,57 +46,65 @@ export class GroupService {
     const group = new Group();
     group.title = data.title;
     group.content = data.content;
-    group.startDate = new Date(data.startDate);
-    group.endDate = new Date(data.endDate);
+    group.startDate = '20220901';
+    group.endDate = '20220907';
     const createdGroup = await this.groupRepository.save(group);
 
     const userGroup = new UserGroup();
     userGroup.Group = group;
-    userGroup.User = await this.getUserById(userId);
+    const user = new User();
+    user.id = userId;
+    userGroup.User = user;
     userGroup.isAdmin = true;
-    const createdUserGroup = await this.userGroupRepository.save(userGroup);
+    await this.userGroupRepository.save(userGroup);
 
-    const groupMission = new GroupMissionDateList();
-    groupMission.Group = group;
-    groupMission.title = data.missionTitle;
-    groupMission.content = data.missionContent;
-    const createdMission = await this.groupMissionDateListRepository.save(
-      groupMission,
-    );
+    const arr = [];
 
-    //check createdUserGroup and createdMission is valid before return then ->
-    return createdGroup;
-
-    // const getGroup = await this.groupRepository
-    //   .createQueryBuilder('group')
-    //   .where('group.id=:id', { id: 1 })
-    //   .getOne();
-
-    // await this.groupRepository.softDelete({ id: 2 });
+    for (let i = 0; i < 7; i++) {
+      const groupMissionDate = new GroupMissionDate();
+      // groupMissionDate.date = moment(data.startDate).format('YYYY-MM-DD')
+      let date = 20220901;
+      groupMissionDate.date = String(date);
+      groupMissionDate.Group = group;
+      arr.push(groupMissionDate);
+      date++;
+    }
+    await this.groupMissionDateRepository.save(arr);
 
     return createdGroup;
   }
 
-  async getJoinedGroupList(userId: number): Promise<any> {
-    const userGroupList = await this.userGroupRepository
-      .createQueryBuilder('user_group')
-      .leftJoinAndSelect('user_group.User', 'user')
-      .where('user_group.id=:userId', { user: userId })
+  async getGroupList(userId = 1): Promise<any> {
+    const result: any = {};
+    const userGroupList = await this.groupRepository
+      .createQueryBuilder('group')
+      .limit(3)
       .getMany();
-    console.log(userGroupList);
-    const groupList = await Promise.all(
-      userGroupList.map((userGroup) => {
-        const group = this.groupRepository
-          .createQueryBuilder('group')
-          .where('group.UserGroup=:userGroup', { userGroup: userGroup })
-          .getOne();
-        return {
-          group: group,
-          isAdmin: userGroup.isAdmin,
-        };
-      }),
-    );
-    return groupList;
+    const obj: any = [
+      {
+        name: ['김민주', '박주형', '이진명'],
+      },
+      { name: ['참가자', '권모술수', '이진형'] },
+      { name: ['윈터', '운동싫어'] },
+    ];
+    result.group = userGroupList.map((x: any, i) => {
+      x.User = obj[i];
+      return x;
+    });
+    return result;
+    // const groupList = await Promise.all(
+    //   userGroupList.map((userGroup) => {
+    //     const group = this.groupRepository
+    //       .createQueryBuilder('group')
+    //       .where('group.UserGroup=:userGroup', { userGroup: userGroup })
+    //       .getOne();
+    //     return {
+    //       group: group,
+    //       isAdmin: userGroup.isAdmin,
+    //     };
+    //   }),
+    // );
+    // return groupList;
   }
 
   async getGroupById(groupId: number): Promise<Group> {

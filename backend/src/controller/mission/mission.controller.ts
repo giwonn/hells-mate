@@ -44,4 +44,18 @@ export class MissionController {
       data: result,
     };
   }
+
+  @ApiOperation({
+    summary: '미션 했는지 확인하는 api',
+  })
+  @Post('')
+  @UseGuards(JwtAuthGuard)
+  async selectMissionDetail(@Body('data') data: any) {
+    const result = await this.missionService.selectMissionDetail(data);
+    return {
+      code: 200,
+      message: '미션 별 목록 정보 불러오기 완료',
+      data: result,
+    };
+  }
 }

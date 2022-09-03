@@ -21,4 +21,8 @@ export class MissionService {
     // 날짜별 미션 불러오기
     return null;
   }
+
+  async selectMissionDetail(date: any) {
+    return null;
+  }
 }

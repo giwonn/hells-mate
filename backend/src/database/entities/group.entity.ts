@@ -31,11 +31,11 @@ export class Group extends BaseEntity {
   @OneToMany(() => UserGroup, (userGroup) => userGroup.Group)
   UserGroup: UserGroup[];
 
-  @Column({ type: 'datetime', name: 'start_date', comment: '시작일' })
-  startDate: Date;
+  @Column({ type: 'varchar', name: 'start_date', comment: '시작일' })
+  startDate: string;
 
-  @Column({ type: 'datetime', name: 'end_date', comment: '종료일' })
-  endDate: Date;
+  @Column({ type: 'varchar', name: 'end_date', comment: '종료일' })
+  endDate: string;
 
   @OneToMany(
     () => GroupMissionDate,

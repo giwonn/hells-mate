@@ -4,7 +4,6 @@ import {
   DateCardTitleText,
   DateCardTodayDot,
   StyledDateCard,
-  StyledDateCardContentContainer,
 } from "components/common/DateCard/styles";
 import { HTMLAttributes } from "react";
 
@@ -18,10 +17,10 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 function DateCard({ dateCardTitle, dateCardContent, isToday, isSelected, ...props }: Props) {
   return (
     <StyledDateCard isSelected={isSelected}>
-      <StyledDateCardContentContainer>
-        <DateCardTitleText isSelected={isSelected}>{dateCardTitle}</DateCardTitleText>
-        <DateCardContentText isSelected={isSelected}>{dateCardContent}</DateCardContentText>
-      </StyledDateCardContentContainer>
+      <DateCardTitleText isSelected={isSelected} isToday={isToday}>
+        {dateCardTitle}
+      </DateCardTitleText>
+      <DateCardContentText isSelected={isSelected}>{dateCardContent}</DateCardContentText>
     </StyledDateCard>
   );
 }

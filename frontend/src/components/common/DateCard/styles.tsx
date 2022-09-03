@@ -1,12 +1,18 @@
 import styled from "@emotion/styled";
 
 interface StyleDateCardProps {
+  isToday?: boolean;
   isSelected: boolean;
 }
 
 export const StyledDateCard = styled.div<StyleDateCardProps>`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 3px;
   padding: 12px;
-  width: 70px;
+  min-width: 70px;
+  max-width: 70px;
   height: 80px;
   background-color: ${({ theme, isSelected }) =>
     isSelected ? theme.color.primary700 : theme.color.white};
@@ -14,16 +20,11 @@ export const StyledDateCard = styled.div<StyleDateCardProps>`
   box-shadow: 0px 0px 4px rgba(95, 123, 255, 0.25);
 `;
 
-export const StyledDateCardContentContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  row-gap: 3px;
-`;
 export const DateCardTitleText = styled.div<StyleDateCardProps>`
   font-size: 24px;
   font-weight: 700;
   color: ${({ theme, isSelected }) => (isSelected ? theme.color.white : theme.color.black500)};
+  text-decoration: ${({ isToday }) => (isToday ? "underline" : "none")};
 `;
 
 export const DateCardContentText = styled.div<StyleDateCardProps>`

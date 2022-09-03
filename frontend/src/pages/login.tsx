@@ -2,7 +2,7 @@ import { NextPage } from "next";
 import Image from "next/image";
 import Script from "next/script";
 
-import kakaoLogin from "../../pages/api/kakaoLogin";
+import kakaoLogin from "../utils/kakaoLogin";
 
 const LoginButton: NextPage = () => {
   return (

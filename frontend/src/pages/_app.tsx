@@ -6,7 +6,6 @@ import { theme } from "styles/theme";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <MobileLayout>

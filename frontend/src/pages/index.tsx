@@ -5,9 +5,6 @@ const Home: NextPage = () => {
   return (
     <>
       <div>Hello World</div>
-      <MobileLayout>
-        fjdskal;djjkfdlsdjfasklfdsdsdsdsffd sjfsldkfdjskldfjskldjkdsl;fjdksla;fjdksl;
-      </MobileLayout>
     </>
   );
 };

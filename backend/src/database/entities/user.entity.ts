@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, OneToMany, OneToOne } from 'typeorm';
+import { Column, Entity, ManyToMany, ManyToOne, OneToMany, OneToOne } from 'typeorm';
 import { Activity } from './activity.entity';
 import BaseEntity from './base.entity';
 import { Group } from './group.entity';
@@ -15,7 +15,7 @@ export class User extends BaseEntity {
   @Column({ type: 'varchar', name: 'token', comment: '카카오톡 OAuth 토큰' })
   token: string;
 
-  @OneToMany(() => UserGroup, (userGroup) => userGroup.User)
+  @ManyToMany(() => UserGroup, (userGroup) => userGroup.User)
   UserGroup: UserGroup[];
 
   @OneToMany(() => Activity, (activity) => activity.User)

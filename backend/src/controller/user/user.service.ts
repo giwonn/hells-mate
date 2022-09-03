@@ -14,7 +14,7 @@ export class UserService {
 
     @InjectRepository(User)
     private creditCardRepository: Repository<User>,
-  ) {}
+  ) { }
 
   async test(user: any) {
     console.log(user);

@@ -7,10 +7,11 @@ import {
   Param,
   Delete,
   Req,
+  UseGuards,
 } from '@nestjs/common';
 import { MissionService } from './mission.service';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { createGroupDto, MissionDto } from '../dto/mission.dto';
+import { JwtAuthGuard } from '@/auth/jwt-auth.guard';
 
 @Controller('mission')
 @ApiTags('mission')
@@ -34,8 +35,8 @@ export class MissionController {
     summary: '날짜 별 미션 목록의 정보 보기',
   })
   @Get('')
+  @UseGuards(JwtAuthGuard)
   async selectMissionList(@Req() req: any) {
-    req.user.id = 1;
     const result = await this.missionService.selectMissionList();
     return {
       code: 200,

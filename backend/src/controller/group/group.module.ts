@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common';
 import { GroupService } from './group.service';
 import { GroupController } from './group.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Group } from '../../database/entities';
+import { Group, GroupMissionDate, GroupMissionDateList, User, UserGroup } from '../../database/entities';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Group])],
+  imports: [TypeOrmModule.forFeature([Group, GroupMissionDate, GroupMissionDateList, User, UserGroup])],
   controllers: [GroupController],
   providers: [GroupService],
 })

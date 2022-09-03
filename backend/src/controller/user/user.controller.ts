@@ -7,7 +7,7 @@ export class UserController {
   constructor(private readonly groupService: UserService) {}
 
   @Post()
-  async create(@Body() createAuthDto: unknown) {
-    return KakaoApi.login();
+  async create(@Body('code') code) {
+    return KakaoApi.login(code);
   }
 }

@@ -10,7 +10,7 @@ import {
   FlexLastColumn,
   FlexRibbonColumn,
   StyledChallenge,
-} from "components/pages/Challenge/styles";
+} from "components/pages/main/Challenge/styles";
 import Image from "next/image";
 import React, { HTMLAttributes } from "react";
 import forkKinfeIcon from "/public/images/forkKnifeIcon.svg";
@@ -18,7 +18,7 @@ import dumbbellIcon from "/public/images/dumbbellIcon.svg";
 import bigDumbbellIcon from "/public/images/ep_exercise_icon.svg";
 import navigateNextIcon from "/public/images/navigateNext.svg";
 import foodIcon from "/public/images/ep_food_icon.svg";
-import ChallengeProfile from "components/pages/Challenge/ChallengeProfile";
+import ChallengeProfile from "components/pages/main/Challenge/ChallengeProfile";
 import { Member, ChallengeType } from "types/api";
 import Link from "next/link";
 

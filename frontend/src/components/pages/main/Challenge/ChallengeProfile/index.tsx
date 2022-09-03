@@ -3,7 +3,7 @@ import {
   ChallengeProfileMoreButton,
   ChallengeProfileMoreButtonText,
   StyledChallengeProfile,
-} from "components/pages/Challenge/ChallengeProfile/styles";
+} from "components/pages/main/Challenge/ChallengeProfile/styles";
 import React, { HTMLAttributes, useEffect, useState } from "react";
 import { Member } from "types/api";
 

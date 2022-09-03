@@ -20,11 +20,6 @@ export class UserGroup extends BaseEntity {
   @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
   User: User;
 
-  @Column({
-    type: 'boolean',
-    name: 'is_admin',
-    comment: '팀장 권한 체크',
-    default: false,
-  })
+  @Column({ type: 'boolean', name: 'is_admin', comment: '팀장 권한 체크' })
   isAdmin: boolean;
 }

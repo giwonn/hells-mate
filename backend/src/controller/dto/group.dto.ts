@@ -37,7 +37,7 @@ export class createGroupDto {
   public startDate: string;
 
   // @IsNumber()
-  // @IsNotEmpty()
+  @IsOptional()
   @ApiProperty({
     example: 7,
     description: '일자',

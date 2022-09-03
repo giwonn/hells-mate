@@ -1,9 +1,10 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import * as dotenv from 'dotenv';
-import * as entities from "./src/database/entities";
+import * as entities from './src/database/entities';
 
 export const ormConfig: TypeOrmModuleOptions = {
   type: 'mysql',
+  database: 'hellthmate',
   entities: Object.values(entities),
   autoLoadEntities: true,
   charset: 'utf8mb4',

@@ -1,8 +1,9 @@
-import { Column, OneToMany, OneToOne } from 'typeorm';
+import { Column, Entity, OneToMany, OneToOne } from 'typeorm';
 import BaseEntity from './base.entity';
 import { Group } from './group.entity';
 import { User } from './user.entity';
 
+@Entity('user_group',{ schema: 'hellthmate' })
 export class UserGroup extends BaseEntity {
   @OneToOne(() => Group, (group) => group.userGroupId)
   groupId: Group;

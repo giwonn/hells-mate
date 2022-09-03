@@ -1,10 +1,17 @@
-import { Column, OneToMany, ManyToOne, OneToOne, JoinColumn } from 'typeorm';
+import {
+  Column,
+  OneToMany,
+  ManyToOne,
+  OneToOne,
+  JoinColumn,
+  Entity,
+} from 'typeorm';
 import BaseEntity from './base.entity';
 import { GroupMissionDate } from './group_mission_date.entity';
 import { MissionCategory } from './mission_category.entity';
 import { Activity } from './activity.entity';
 
-
+@Entity('group_mission_day_list', { schema: 'hellthmate' })
 export class GroupMissionDayList extends BaseEntity {
   @ManyToOne(() => GroupMissionDate, (date) => date.missionId)
   groupMissionDateId: GroupMissionDate;

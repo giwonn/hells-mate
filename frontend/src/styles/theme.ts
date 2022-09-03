@@ -10,10 +10,19 @@ export const theme: Theme = {
     mint: "#38BDAC",
     background: "#EFF3F6",
     white: "#FFFFFF",
+    gray100: "#F5F6FA",
     black500: "#677A90",
     black900: "#191F28",
+    blue400: "#2D3A7C",
+    blue200: "#007FF4",
   },
   paddings: {
     globalPadding: "16px",
+  },
+  radius: {
+    lg: "20px",
+    md: "16px",
+    sm: "12px",
+    xs: "7px",
   },
 };

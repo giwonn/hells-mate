@@ -3,8 +3,8 @@ import styled from "@emotion/styled";
 export const BoxStyle = styled.button`
   border-radius: 10px;
   border: none;
-  background-color: ${({theme}) => theme.color.primary700 };
-  color: #FFFFFF;
+  background-color: ${({theme}) => theme.color.primary700};
+  color: ${({theme}) => theme.color.white};
   width: 328px;
   height: 56px;
   margin-left: auto;
@@ -16,7 +16,7 @@ export const BoxStyle = styled.button`
   font-weight: 700;
 
   &:hover {
-    background-color: #2d3a7c
+    background-color: ${({theme}) => theme.color.blue400};
   } 
 `;
 

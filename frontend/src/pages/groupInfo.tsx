@@ -75,7 +75,7 @@ export default function GroupInfo() {
       <MobileLayout>
         <MoveContainer>
           <Link href='/firstPage' passHref>
-              <Goback><Image src={lPolygon}/></Goback>
+            <Goback><Image src={lPolygon}/></Goback>
           </Link>
           <span><b>2</b> / 3</span>
         </MoveContainer>
@@ -91,7 +91,6 @@ export default function GroupInfo() {
             </BlueGt>
           {/* </Link> */}
         </form>
-
       </MobileLayout>
     </>
   )

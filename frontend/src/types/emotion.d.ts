@@ -11,11 +11,20 @@ declare module "@emotion/react" {
       mint: string;
       background: string;
       white: string;
+      gray100: string;
       black500: string;
       black900: string;
+      blue400: string;
+      blue200: string;
     };
     paddings: {
       globalPadding: string;
+    };
+    radius: {
+      lg: string;
+      md: string;
+      sm: string;
+      xs: string;
     };
   }
 }

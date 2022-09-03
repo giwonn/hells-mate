@@ -15,21 +15,17 @@ export default function Congratulation() {
   return (
     <>
       <MobileLayout>
-        <Title>수고하셨어요!</Title>
-        <SubDescript>
-          미션 하나를 달성하셨어요!
-          <br />
-          이대로 계속 달성해볼까요?
-        </SubDescript>
-        <FlagContainer>
-          <Image src={flag} objectFit="scale-down" />
-        </FlagContainer>
-        <Link href="/home" passHref>
-          <BoxStyle>
-            <a>홈으로</a>
-          </BoxStyle>
-        </Link>
+      <Title>수고하셨어요!</Title>
+      <SubDescript>미션 하나를 달성하셨어요!<br/>이대로 계속 달성해볼까요?</SubDescript>
+      <FlagContainer>
+        <Image src={flag} objectFit='scale-down' />
+      </FlagContainer>
+      <Link href='/home' passHref>
+        <a>
+          <BoxStyle>홈으로</BoxStyle>
+        </a>
+      </Link>
       </MobileLayout>
     </>
-  );
+  )
 }

@@ -1,15 +1,15 @@
 import styled from "@emotion/styled";
-import {BoxStyle } from '../components/common/BlueBox'
+import { BoxStyle } from "../components/common/BlueBox";
 import MobileLayout from "../components/common/Layout/MobileLayout";
-import flag from '../../images/flag.svg'
+import flag from "../../images/flag.svg";
 import Image from "next/image";
 import Link from "next/link";
-import { Title, SubDescript } from '../components/common/Description/'
+import { Title, SubDescript } from "../components/common/Description/";
 import { ImageContainer } from "components/common/Container";
 
-const FlagContainer = styled(ImageContainer) `
+const FlagContainer = styled(ImageContainer)`
   top: 100px;
-`
+`;
 
 export default function Congratulation() {
   return (
@@ -29,4 +29,3 @@ export default function Congratulation() {
     </>
   )
 }
-

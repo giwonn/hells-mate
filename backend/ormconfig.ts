@@ -7,7 +7,7 @@ export const ormConfig: TypeOrmModuleOptions = {
   entities: Object.values(entities),
   autoLoadEntities: true,
   charset: 'utf8mb4',
-  synchronize: false,
+  synchronize: true,
   logging: true,
   keepConnectionAlive: true,
   replication: {

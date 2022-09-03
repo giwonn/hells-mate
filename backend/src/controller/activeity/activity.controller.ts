@@ -1,9 +1,10 @@
 import { Controller, Post, Body, Req } from '@nestjs/common';
 import { ActivityService } from './activity.service';
-import { ApiOperation } from '@nestjs/swagger';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CompleteMissionDto } from '../dto/mission.dto';
 
 @Controller('activity')
+@ApiTags('activity')
 export class ActivityController {
   constructor(private readonly activityService: ActivityService) {}
 

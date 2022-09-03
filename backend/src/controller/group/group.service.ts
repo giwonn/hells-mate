@@ -16,7 +16,7 @@ import { JwtService } from '@nestjs/jwt';
 export class GroupService {
   constructor(
     private connection: Connection,
-    private jwtService: JwtService,
+
     @InjectRepository(User)
     private userRepository: Repository<User>,
 
@@ -47,8 +47,8 @@ export class GroupService {
     const createdGroup = await this.groupRepository.save(group);
 
     const userGroup = new UserGroup();
-    userGroup.Group = group;
-    userGroup.User = await this.getUserById(userId);
+    userGroup.Group = [group];
+    userGroup.User = [await this.getUserById(userId)];
     userGroup.isAdmin = true;
     const createdUserGroup = await this.userGroupRepository.save(userGroup);
 
@@ -73,9 +73,7 @@ export class GroupService {
     return createdGroup;
   }
 
-  async getJoinedGroupList(
-    userId: number,
-  ): Promise<{ group: Promise<Group>; isAdmin: boolean }[]> {
+  async getJoinedGroupList(userId: number): Promise<any> {
     const userGroupList = await this.userGroupRepository
       .createQueryBuilder('user_group')
       .leftJoinAndSelect('user_group.User', 'user')
@@ -104,28 +102,4 @@ export class GroupService {
       .getOne();
     return group;
   }
-
-  async createInviteUrl(groupId: number) {
-    const group = await this.groupRepository.findOne({
-      where: { id: groupId },
-    });
-
-    const payload = {
-      token: group.token,
-    };
-
-    const token = await this.jwtService.sign(payload, {
-      secret: process.env.JWT_ACCESS_TOKEN_SECRET,
-      expiresIn: `${process.env.JWT_ACCESS_TOKEN_EXPIRATION_TIME}s`,
-    });
-
-    return token;
-  }
-
-  // async getDatePage(group: )
-
-  // async select참여도(groupId: number) {
-  //   // 참여도 통계 보기
-  //   return null;
-  // }
 }

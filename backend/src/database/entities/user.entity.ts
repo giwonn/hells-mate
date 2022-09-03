@@ -9,10 +9,20 @@ export class User extends BaseEntity {
   @Column({ type: 'varchar', name: 'nickname', comment: '닉네임' })
   nickname: string;
 
-  @Column({ type: 'varchar', name: 'profile', comment: '프로필' })
+  @Column({
+    type: 'varchar',
+    name: 'profile',
+    comment: '프로필',
+    nullable: true,
+  })
   profile: string;
 
-  @Column({ type: 'varchar', name: 'token', comment: '카카오톡 OAuth 토큰' })
+  @Column({
+    type: 'varchar',
+    name: 'token',
+    comment: '카카오톡 OAuth 토큰',
+    default: '1',
+  })
   token: string;
 
   @ManyToMany(() => UserGroup, (userGroup) => userGroup.User)

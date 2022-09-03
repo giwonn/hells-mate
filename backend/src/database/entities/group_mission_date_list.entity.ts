@@ -7,9 +7,7 @@ import {
   Entity,
 } from 'typeorm';
 import BaseEntity from './base.entity';
-import { GroupMissionDate } from './group_mission_date.entity';
 import { MissionCategory } from './mission_category.entity';
-import { Activity } from './activity.entity';
 import { Group } from './group.entity';
 
 @Entity('group_mission_date_list', { schema: 'hellthmate' })

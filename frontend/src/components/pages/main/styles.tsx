@@ -3,6 +3,9 @@ import styled from "@emotion/styled";
 export const StyledMainPageContainer = styled.div`
   background-color: ${({ theme }) => theme.color.background};
   padding: 50px 16px 16px;
+  height: 640px;
+  overflow-y: scroll;
+  position: relative;
 `;
 
 export const MainPageTopRowContainer = styled.div`

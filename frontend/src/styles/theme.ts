@@ -1,7 +1,7 @@
 import { Theme } from "@emotion/react";
 
 export const theme: Theme = {
-  colors: {
+  color: {
     primary100: "#F8F9FD",
     primary200: "#ECF0F9",
     primary600: "#7CA4F9",

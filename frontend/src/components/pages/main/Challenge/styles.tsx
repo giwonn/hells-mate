@@ -34,9 +34,6 @@ export const FlexLastColumn = styled.div`
   row-gap: 24px;
   align-items: flex-end;
   flex-shrink: 0;
-  /* flex-grow: 1;
-  flex-basis: 1;
-  min-width: 0; */
 `;
 
 export const ChallengeRibbon = styled.div<StyleChallengeCategory>`
@@ -60,4 +57,10 @@ export const ChallengeDescriptionText = styled.div`
   font-weight: 400;
   color: ${({ theme }) => theme.color.black900};
   margin-bottom: 15px;
+`;
+
+export const FlexSpaceBetweenContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 `;

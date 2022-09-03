@@ -1,26 +1,27 @@
+import React, { HTMLAttributes } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { css } from "@emotion/react";
+import ChallengeProfile from "components/pages/main/Challenge/ChallengeProfile";
 import {
   ChallengeDescriptionText,
   ChallengeRibbon,
   ChallengeTitleText,
-  FlexColumn,
   FlexContentColumn,
   FlexContentIconColumn,
   FlexContentInfoColumn,
   FlexLastColumn,
   FlexRibbonColumn,
+  FlexSpaceBetweenContainer,
   StyledChallenge,
 } from "components/pages/main/Challenge/styles";
-import Image from "next/image";
-import React, { HTMLAttributes } from "react";
-import forkKinfeIcon from "/public/images/forkKnifeIcon.svg";
+import { ChallengeType } from "types/api";
+
 import dumbbellIcon from "/public/images/dumbbellIcon.svg";
 import bigDumbbellIcon from "/public/images/ep_exercise_icon.svg";
-import navigateNextIcon from "/public/images/navigateNext.svg";
 import foodIcon from "/public/images/ep_food_icon.svg";
-import ChallengeProfile from "components/pages/main/Challenge/ChallengeProfile";
-import { Member, ChallengeType } from "types/api";
-import Link from "next/link";
+import forkKinfeIcon from "/public/images/forkKnifeIcon.svg";
+import navigateNextIcon from "/public/images/navigateNext.svg";
 
 interface Props extends HTMLAttributes<HTMLDivElement>, ChallengeType {}
 
@@ -30,24 +31,35 @@ function Challenge({ challengeTitle, description, members, category, ...props }:
       <FlexRibbonColumn>
         <ChallengeRibbon category={category} />
       </FlexRibbonColumn>
-      <FlexContentColumn>
+      <FlexContentColumn
+        css={css`
+          flex-grow: 1;
+        `}
+      >
         <FlexContentIconColumn>
-          <Image src={category === "food" ? forkKinfeIcon : dumbbellIcon} />
+          <Image alt="icon" src={category === "food" ? forkKinfeIcon : dumbbellIcon} />
         </FlexContentIconColumn>
-        <FlexContentInfoColumn>
-          <ChallengeTitleText>{challengeTitle}</ChallengeTitleText>
-          <ChallengeDescriptionText>{description}</ChallengeDescriptionText>
-          <ChallengeProfile members={members} />
-        </FlexContentInfoColumn>
-        <FlexLastColumn>
-          <Link href="#" passHref>
-            <a>
-              <Image src={navigateNextIcon} />
-            </a>
-          </Link>
+        <FlexSpaceBetweenContainer>
+          <FlexContentInfoColumn>
+            <ChallengeTitleText>{challengeTitle}</ChallengeTitleText>
+            <ChallengeDescriptionText>{description}</ChallengeDescriptionText>
+            <ChallengeProfile members={members} />
+          </FlexContentInfoColumn>
+          <FlexLastColumn>
+            <Link href="#" passHref>
+              <a>
+                <Image alt="navigation next icon" src={navigateNextIcon} />
+              </a>
+            </Link>
 
-          <Image src={category === "food" ? foodIcon : bigDumbbellIcon} width={90} height={90} />
-        </FlexLastColumn>
+            <Image
+              alt="big dumbbell icon"
+              src={category === "food" ? foodIcon : bigDumbbellIcon}
+              width={90}
+              height={90}
+            />
+          </FlexLastColumn>
+        </FlexSpaceBetweenContainer>
       </FlexContentColumn>
     </StyledChallenge>
   );

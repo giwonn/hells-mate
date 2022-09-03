@@ -36,7 +36,7 @@ export const FlexLastColumn = styled.div`
 `;
 
 export const ChallengeRibbon = styled.div`
-  background-color: red;
+  background-color: ${({ theme }) => theme.color.orange};
   width: 8px;
   height: 100%;
   border-radius: 10px 0 0 10px;

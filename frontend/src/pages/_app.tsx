@@ -1,8 +1,8 @@
+import type { AppProps } from "next/app";
 import { ThemeProvider } from "@emotion/react";
 import MobileLayout from "components/common/Layout/MobileLayout";
-import type { AppProps } from "next/app";
+import { GlobalStyles } from "styles/globalStyles";
 import { theme } from "styles/theme";
-import { GlobalStyles } from "../styles/globalStyles";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

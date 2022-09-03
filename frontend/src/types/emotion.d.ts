@@ -17,5 +17,11 @@ declare module "@emotion/react" {
     paddings: {
       globalPadding: string;
     };
+    radius: {
+      lg: string;
+      md: string;
+      sm: string;
+      xs: string;
+    };
   }
 }

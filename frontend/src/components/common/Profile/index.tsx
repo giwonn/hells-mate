@@ -11,13 +11,24 @@ import MainPageBottomSheetSection from "components/pages/main/sections/MainPageB
 import { resetButtonStyle } from "styles/utils/button";
 
 import defaultProfilePicture from "/public/images/default_profile_icon.svg";
+import { Member } from "types/api";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
-  member: string;
+  member: Member;
   checkStatusInfo: boolean[];
+  currentUser: number;
+  challengeTitle: string;
+  description: string;
 }
 
-function Profile({ member, checkStatusInfo, ...props }: Props) {
+function Profile({
+  member,
+  checkStatusInfo,
+  currentUser,
+  challengeTitle,
+  description,
+  ...props
+}: Props) {
   const [isShowing, setIsShowing] = useState(false);
   return (
     <StyledProfile {...props}>
@@ -42,13 +53,15 @@ function Profile({ member, checkStatusInfo, ...props }: Props) {
         }}
       >
         <MainPageBottomSheetSection
+          challengeTitle={challengeTitle}
+          description={description}
           member={member}
-          currentUser={member}
+          currentUser={{ id: 1, nicknane: "서하서하" }}
           checkStatusInfo={checkStatusInfo}
         />
       </BottomSheet>
 
-      <ProfileNameText>{member}</ProfileNameText>
+      <ProfileNameText>{member.nickname}</ProfileNameText>
     </StyledProfile>
   );
 }

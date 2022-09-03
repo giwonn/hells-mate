@@ -6,8 +6,8 @@ import { Title } from "components/common/Description";
 import { motion } from "framer-motion";
 import { defaultFadeInVariants, staggerOne } from "styles/motions";
 
-import letter from "../../images/letter.svg";
-import Router from "next/router";
+import letter from "../../../images/letter.svg";
+import Router, { useRouter } from "next/router";
 
 const FormContainer = styled(motion.form)`
   padding: 53px 16px;
@@ -24,6 +24,9 @@ const BoxContainer = styled.div`
 `;
 
 export default function ReceivePage() {
+  const router = useRouter();
+  const { id } = router.query;
+
   const handleClick = (e: any) => {
     e.preventDefault();
     Router.push("/");

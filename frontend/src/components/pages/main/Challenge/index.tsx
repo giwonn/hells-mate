@@ -63,7 +63,11 @@ function Challenge({
               <ChallengeTitleText>{challengeTitle}</ChallengeTitleText>
               <ChallengeDescriptionText>{description}</ChallengeDescriptionText>
             </div>
-            <ChallengeProfile members={members} />
+            <ChallengeProfile
+              members={members}
+              challengeTitle={challengeTitle}
+              description={description}
+            />
           </FlexContentInfoColumn>
           <FlexLastColumn>
             <Link href="#" passHref>

@@ -9,6 +9,9 @@ import letter from "../../../images/letter.svg";
 import lPolygon from "../../../images/lPolygon.svg";
 import { BoxStyle } from "../../components/common/BlueBox";
 import { Title } from "../../components/common/Description";
+import { resetButtonStyle } from "../../styles/utils/button";
+import { css } from "@emotion/react";
+import { useState } from "react";
 
 const FormContainer = styled(motion.form)`
   padding: 53px 16px;
@@ -39,8 +42,7 @@ const ConfirmBox = styled(BoxStyle)`
 `;
 
 export default function InvitePage() {
-  const onClick = (e: any) => {};
-
+  const [headerText, setHeaderText] = useState("링크를 통해 \n초대해주세요.");
   return (
     <FormContainer variants={staggerOne} initial="initial" whileInView="animate" exit="exit">
       <MoveContainer>
@@ -53,18 +55,22 @@ export default function InvitePage() {
           <b>4</b> / 4
         </motion.span>
       </MoveContainer>
-      <Title variants={defaultFadeInVariants}>
-        링크를 통해
-        <br />
-        초대해주세요.
-      </Title>
+      <Title variants={defaultFadeInVariants}>{headerText}</Title>
       <ImageContainer variants={defaultFadeInVariants}>
         <Image alt={"letter"} src={letter} objectFit="scale-down" />
       </ImageContainer>
       <BoxContainer>
-        <BlueBox onClick={onClick} variants={defaultFadeInVariants}>
+        <BlueBox
+          onClick={(e) => {
+            e.preventDefault();
+            navigator.clipboard.writeText("http://localhost:3000/receive/1");
+            setHeaderText("복사되었습니다!");
+          }}
+          variants={defaultFadeInVariants}
+        >
           <p>초대 링크 보내기</p>
         </BlueBox>
+
         <ConfirmBox variants={defaultFadeInVariants}>
           <p>확인</p>
         </ConfirmBox>

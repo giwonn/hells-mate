@@ -1,14 +1,13 @@
 export interface Member {
   id: number;
-  memberName: string;
-  profilesrc: string | null;
+  nickname: string;
 }
 
 export interface ChallengeType {
   challengeTitle: string;
   description: string;
   category: number;
-  members: string[];
+  members: Member[];
 }
 
 export interface ApiResponse<T> {

@@ -2,20 +2,20 @@ import { Injectable } from '@nestjs/common';
 import { createGroupDto, MissionDto } from '../dto/mission.dto';
 import { Connection, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Group } from '../../database/entities';
+import { Group, MissionCategory } from '../../database/entities';
 
 @Injectable()
 export class MissionService {
   constructor(
     private connection: Connection,
 
-    @InjectRepository(Group)
-    private groupRepository: Repository<Group>,
+    @InjectRepository(MissionCategory)
+    private missionCategoryRepository: Repository<MissionCategory>,
   ) {}
 
-  async selectMissionCategory() {
-    // 미션카테고리 불러오기
-    return null;
+  async selectMissionCategory(): Promise<any> {
+    const result = await this.missionCategoryRepository.find();
+    return result;
   }
 
   async selectMissionList() {

@@ -7,7 +7,7 @@ import { UserGroup } from './user_group.entity';
 @Entity('user', { schema: 'hellthmate' })
 export class User extends BaseEntity {
   @Column({ type: 'varchar', name: 'nickname', comment: '닉네임' })
-  name: string;
+  nickname: string;
 
   @Column({ type: 'varchar', name: 'profile', comment: '프로필' })
   profile: string;

@@ -22,7 +22,6 @@ export class MissionController {
   })
   @Get('mission-category')
   async selectMissionCategory(@Req() req: any) {
-    req.user.id = 1;
     const result = await this.missionService.selectMissionCategory();
     return {
       code: 200,

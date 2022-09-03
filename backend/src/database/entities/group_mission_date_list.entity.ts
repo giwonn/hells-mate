@@ -18,13 +18,13 @@ export class GroupMissionDateList extends BaseEntity {
   @Column({ type: 'varchar', name: 'title', comment: '제목' })
   title: string;
 
-  @Column({ type: 'varchar', name: 'content', comment: '내용' })
+  @Column({ type: 'int', name: 'content', comment: '내용' })
   content: string;
 
   @ManyToOne(
     () => MissionCategory,
     (missionCategory) => missionCategory.GroupMissionDateList,
   )
-  @JoinColumn()
+  @JoinColumn([{ name: 'id', referencedColumnName: 'id' }])
   MissionCategory: MissionCategory;
 }

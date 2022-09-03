@@ -3,6 +3,7 @@ const redirectUri = process.env.NEXT_PUBLIC_KAKAO_LOGIN_REDIRECT_URI;
 
 export const init = () => {
   const { Kakao } = window;
+
   if (loginKey && !Kakao?.isInitialized()) {
     Kakao?.init(loginKey);
   }
@@ -10,7 +11,6 @@ export const init = () => {
   return Kakao;
 };
 
-export default async () => {
-  const kakao = init();
-  await kakao.Auth.authorize({ redirectUri });
-};
+export default async function kakaoLogin() {
+  await window.Kakao.Auth.authorize({ redirectUri });
+}

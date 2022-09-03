@@ -24,8 +24,8 @@ function ChallengeProfile({ members, ...props }: Props) {
 
   return (
     <StyledChallengeProfile {...props}>
-      {processedMembers.map((member) => (
-        <Profile member={member} />
+      {processedMembers.map((member, index) => (
+        <Profile member={member} key={index} />
       ))}
       {isMoreButton && (
         <ChallengeProfileMoreButton>

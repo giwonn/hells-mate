@@ -1,10 +1,26 @@
+import { Activity } from '@/database/entities';
 import { Injectable } from '@nestjs/common';
-import { CompleteMissionDto, MissionDto } from '../dto/mission.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { PointsDateRangeDto } from '../dto/activity.dto';
+import { CompleteMissionDto } from '../dto/mission.dto';
 
 @Injectable()
 export class ActivityService {
-  async completeMission(userId: number, missionDto: CompleteMissionDto) {
-    // 미션 인증하기
+  constructor(
+    @InjectRepository(Activity)
+    private activityRepository: Repository<Activity>,
+    
+  ) {}
+  async completeMission(userId: number, groupId: number, date: string) {
+    const activity = await this.activityRepository
+      .createQueryBuilder('activity')
+      .where('activity.user')
+      .andWhere
+    return null;
+  }
+
+  async getPointsDateRange(userId: number, groupId: number, startDate: string, endDate: string) {
     return null;
   }
 }

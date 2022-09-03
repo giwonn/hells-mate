@@ -15,15 +15,14 @@ export class ActivityController {
     @Req() req: any,
     @Body() completeMissionDto: CompleteMissionDto,
   ) {
-    req.user.id = 1;
-    const result = this.activityService.completeMission(
-      req.user.id,
-      completeMissionDto,
-    );
+    // const result = this.activityService.completeMission(
+    //   req.user.id,
+    //   completeMissionDto,
+    // );
     return {
       code: 200,
       message: '미션 인증하기 완료',
-      data: result,
+      data: null,
     };
   }
 }

@@ -4,6 +4,7 @@ import Image from "next/image";
 import BottomSheet from "components/common/ButtomSheet";
 import Calendar from "components/pages/main/Calendar";
 import Challenge from "components/pages/main/Challenge";
+import Loading from "components/pages/main/Loading";
 import {
   MainPageCalendarContaier,
   MainPageChallengesContainer,
@@ -75,7 +76,7 @@ const Home: NextPage = () => {
       </>
     );
   } else {
-    return <div>loading</div>;
+    return <Loading />;
   }
 };
 

@@ -1,4 +1,7 @@
+import { ReactNode } from "react";
+
 export interface Member {
+  [x: string]: ReactNode;
   id: number;
   nickname: string;
 }
@@ -6,8 +9,13 @@ export interface Member {
 export interface ChallengeType {
   challengeTitle: string;
   description: string;
-  category: number;
+  category?: number;
   members: Member[];
+}
+export interface ChallengeTypeWithoutMember {
+  challengeTitle?: string;
+  description?: string;
+  category?: number;
 }
 
 export interface ApiResponse<T> {

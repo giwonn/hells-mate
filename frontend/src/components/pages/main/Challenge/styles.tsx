@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 interface StyleChallengeCategory {
-  category: number;
+  category?: number;
 }
 
 export const StyledChallenge = styled.div`

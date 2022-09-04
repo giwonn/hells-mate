@@ -6,7 +6,7 @@ interface StyleProps {
   variant: "default" | "disable";
 }
 
-export const StyledButton = styled.button<StyledProps>`
+export const StyledButton = styled.button<StyleProps>`
   ${resetButtonStyle}
   width: 100%;
   padding: 16px;

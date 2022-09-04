@@ -12,7 +12,7 @@ import {
   FlexSpaceBetweenContainer,
   StyledChallenge,
 } from "components/pages/main/sections/MainPageBottomSheetSection/BottomSheetChallenge/styles";
-import { ChallengeType } from "types/api";
+import { ChallengeTypeWithoutMember } from "types/api";
 
 import dumbbellIcon from "/public/images/dumbbellIcon.svg";
 import bigDumbbellIcon from "/public/images/ep_exercise_icon.svg";
@@ -20,14 +20,13 @@ import foodIcon from "/public/images/ep_food_icon.svg";
 import forkKinfeIcon from "/public/images/forkKnifeIcon.svg";
 import navigateNextIcon from "/public/images/navigateNext.svg";
 
-interface Props extends HTMLAttributes<HTMLDivElement>, ChallengeType {
+interface Props extends HTMLAttributes<HTMLDivElement>, ChallengeTypeWithoutMember {
   onAreaClick: () => void;
 }
 
 function BottomSheetChallenge({
   challengeTitle,
   description,
-  members,
   category,
   onAreaClick,
   ...props

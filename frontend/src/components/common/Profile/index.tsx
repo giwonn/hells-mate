@@ -11,15 +11,14 @@ import MainPageBottomSheetSection from "components/pages/main/sections/MainPageB
 import { resetButtonStyle } from "styles/utils/button";
 
 import defaultProfilePicture from "/public/images/default_profile_icon.svg";
-import { Member } from "types/api";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
-  member: Member;
+  member: any;
   checkStatusInfo: boolean[];
-  currentUser: number;
-  challengeTitle: string;
-  description: string;
-  isClickable: boolean;
+  currentUser?: number;
+  challengeTitle?: string;
+  description?: string;
+  isClickable?: boolean;
 }
 
 function Profile({
@@ -60,7 +59,7 @@ function Profile({
           challengeTitle={challengeTitle}
           description={description}
           member={member}
-          currentUser={{ id: 1, nicknane: "서하서하" }}
+          currentUser={{ id: 1, nickname: "서하서하" }}
           checkStatusInfo={checkStatusInfo}
         />
       </BottomSheet>

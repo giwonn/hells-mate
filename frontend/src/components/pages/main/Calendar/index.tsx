@@ -9,6 +9,7 @@ import {
 import { addDays, addMonths, subDays, subMonths } from "date-fns";
 import getDaysInMonth from "date-fns/getDaysInMonth";
 import lastDayOfMonth from "date-fns/lastDayOfMonth";
+import { defaultFadeInVariants, staggerOne } from "styles/motions";
 
 import arrowLeftIcon from "/public/icons/arrow_left.svg";
 import arrowRightIcon from "/public/icons/arrow_right.svg";
@@ -54,14 +55,14 @@ function Calendar({ selectedDate, onDateChange, ...props }: Props) {
 
   return (
     <div {...props}>
-      <CalendarMonthSelectorContainer>
+      <CalendarMonthSelectorContainer variants={defaultFadeInVariants}>
         <Image
           src={arrowLeftIcon.src}
           width={30}
           height={30}
           onClick={() => setCurrentDay(subMonths(currentDay, 1))}
         />
-        <CalendarMonthSelectorMonthText>
+        <CalendarMonthSelectorMonthText variants={defaultFadeInVariants}>
           {currentDay.getFullYear()}년 {currentDay.getMonth() + 1}월
         </CalendarMonthSelectorMonthText>
         <Image
@@ -71,7 +72,7 @@ function Calendar({ selectedDate, onDateChange, ...props }: Props) {
           onClick={() => setCurrentDay(addMonths(currentDay, 1))}
         />
       </CalendarMonthSelectorContainer>
-      <StyledCalendar>
+      <StyledCalendar variants={staggerOne}>
         {populatedDateArray.map((date, index) => (
           <DateCard
             dateCardTitle={String(date.getUTCDate())}

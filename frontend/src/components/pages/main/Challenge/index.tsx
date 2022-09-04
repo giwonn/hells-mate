@@ -15,6 +15,7 @@ import {
   FlexSpaceBetweenContainer,
   StyledChallenge,
 } from "components/pages/main/Challenge/styles";
+import { defaultFadeInUpVariants } from "styles/motions";
 import { ChallengeType } from "types/api";
 
 import dumbbellIcon from "/public/images/dumbbellIcon.svg";
@@ -40,7 +41,7 @@ function Challenge({
     onAreaClick();
   };
   return (
-    <StyledChallenge onClick={onAreaClickHandler} {...props}>
+    <StyledChallenge onClick={onAreaClickHandler} variants={defaultFadeInUpVariants} {...props}>
       <FlexRibbonColumn>
         <ChallengeRibbon category={category} />
       </FlexRibbonColumn>

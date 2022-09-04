@@ -4,6 +4,8 @@ import {
   DateCardTitleText,
   StyledDateCard,
 } from "components/common/DateCard/styles";
+import { motion } from "framer-motion";
+import { defaultFadeInSlideToLeftVariants } from "styles/motions/motions";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   dateCardTitle: string;
@@ -14,12 +16,14 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 
 function DateCard({ dateCardTitle, dateCardContent, isToday, isSelected, ...props }: Props) {
   return (
-    <StyledDateCard isSelected={isSelected} {...props}>
-      <DateCardTitleText isSelected={isSelected} isToday={isToday}>
-        {dateCardTitle}
-      </DateCardTitleText>
-      <DateCardContentText isSelected={isSelected}>{dateCardContent}</DateCardContentText>
-    </StyledDateCard>
+    <motion.div variants={defaultFadeInSlideToLeftVariants}>
+      <StyledDateCard isSelected={isSelected} {...props}>
+        <DateCardTitleText isSelected={isSelected} isToday={isToday}>
+          {dateCardTitle}
+        </DateCardTitleText>
+        <DateCardContentText isSelected={isSelected}>{dateCardContent}</DateCardContentText>
+      </StyledDateCard>
+    </motion.div>
   );
 }
 

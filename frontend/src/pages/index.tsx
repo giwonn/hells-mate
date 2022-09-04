@@ -14,6 +14,7 @@ import {
   StyledMainPageContainer,
 } from "components/pages/main/styles";
 import { useAxiosData } from "hooks/useAxiosData";
+import { defaultFadeInVariants, staggerOne } from "styles/motions";
 
 import rankingIcon from "/public/icons/ranking_icon.svg";
 
@@ -51,14 +52,19 @@ const Home: NextPage = () => {
         >
           +
         </AddChallengeButton>
-        <StyledMainPageContainer>
+        <StyledMainPageContainer
+          variants={staggerOne}
+          initial="initial"
+          whileInView="animate"
+          exit="exit"
+        >
           <MainPageTopRowContainer>
             <Image alt="ranking icon" src={rankingIcon.src} width={20} height={27} />
           </MainPageTopRowContainer>
-          <MainPageCalendarContaier>
+          <MainPageCalendarContaier variants={defaultFadeInVariants}>
             <Calendar onDateChange={setSelectedDate} selectedDate={selectedDate} />
           </MainPageCalendarContaier>
-          <MainPageChallengesContainer>
+          <MainPageChallengesContainer variants={staggerOne}>
             {apiGroupData.data?.group?.map((groupItem: any, index: any) => (
               <Challenge
                 onAreaClick={() => {

@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
+import { motion } from "framer-motion";
 
 interface StyleChallengeCategory {
   category?: number;
 }
 
-export const StyledChallenge = styled.div`
+export const StyledChallenge = styled(motion.div)`
   display: flex;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.color.white};

@@ -10,7 +10,9 @@ export const init = () => {
   return Kakao;
 };
 
-export default async () => {
+const exportingFunction = async () => {
   const kakao = init();
   await kakao.Auth.authorize({ redirectUri });
 };
+
+export default exportingFunction;

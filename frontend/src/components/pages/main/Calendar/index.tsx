@@ -1,17 +1,17 @@
-import { BoxLabel } from "components/common/Box";
+import { Dispatch, HTMLAttributes, SetStateAction, useState } from "react";
+import Image from "next/image";
 import DateCard from "components/common/DateCard";
 import {
   CalendarMonthSelectorContainer,
   CalendarMonthSelectorMonthText,
   StyledCalendar,
 } from "components/pages/main/Calendar/styles";
-import { addDays, addMonths, setMonth, subDays, subMonths } from "date-fns";
+import { addDays, addMonths, subDays, subMonths } from "date-fns";
 import getDaysInMonth from "date-fns/getDaysInMonth";
 import lastDayOfMonth from "date-fns/lastDayOfMonth";
-import { Dispatch, HTMLAttributes, SetStateAction, useState } from "react";
+
 import arrowLeftIcon from "/public/icons/arrow_left.svg";
 import arrowRightIcon from "/public/icons/arrow_right.svg";
-import Image from "next/image";
 
 function populateDateArray(startDate: Date, endDate: Date) {
   let currentDate = subDays(startDate, 1);

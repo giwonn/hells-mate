@@ -1,1 +1,1 @@
-export {BlueGt} from 'components/common/BlueGt/style'
+export { BlueGt } from "components/common/BlueGt/style";

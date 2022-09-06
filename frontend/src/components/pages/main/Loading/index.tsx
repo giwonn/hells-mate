@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Box, CircularProgress } from "@mui/material";
-import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 var ProgressBar = require("progressbar.js");
 

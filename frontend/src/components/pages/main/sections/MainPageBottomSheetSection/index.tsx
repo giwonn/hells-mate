@@ -1,4 +1,5 @@
 import { HTMLAttributes } from "react";
+import Router from "next/router";
 import { css } from "@emotion/react";
 import Button from "components/common/Button";
 import BottomSheetResultSelector from "components/pages/main/sections/MainPageBottomSheetSection/BottomSheetResultSelector";
@@ -6,7 +7,6 @@ import { Member } from "types/api";
 
 import { FlexColumnContainer } from "./styles";
 import BottomSheetChallenge from "./BottomSheetChallenge/index";
-import Router from "next/router";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   member: Member;

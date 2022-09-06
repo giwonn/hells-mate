@@ -9,9 +9,9 @@ import {
 } from "components/common/Profile/styles";
 import MainPageBottomSheetSection from "components/pages/main/sections/MainPageBottomSheetSection";
 import { resetButtonStyle } from "styles/utils/button";
+import { Member } from "types/api";
 
 import defaultProfilePicture from "/public/images/default_profile_icon.svg";
-import { Member } from "types/api";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   member: Member;

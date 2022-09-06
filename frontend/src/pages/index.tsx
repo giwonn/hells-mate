@@ -25,7 +25,6 @@ declare global {
 const Home: NextPage = () => {
   const apiGroupData: any = useAxiosData("/group");
 
-  console.log(apiGroupData);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [isShowing, setIsShowing] = useState(false);
   if (apiGroupData) {

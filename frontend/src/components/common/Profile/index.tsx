@@ -60,7 +60,7 @@ function Profile({
           challengeTitle={challengeTitle}
           description={description}
           member={member}
-          currentUser={{ id: 1, nicknane: "서하서하" }}
+          currentUser={{ id: 1, nickname: "서하서하" }}
           checkStatusInfo={checkStatusInfo}
         />
       </BottomSheet>

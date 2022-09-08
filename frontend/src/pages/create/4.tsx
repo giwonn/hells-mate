@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styled from "@emotion/styled";
@@ -9,9 +10,6 @@ import letter from "../../../images/letter.svg";
 import lPolygon from "../../../images/lPolygon.svg";
 import { BoxStyle } from "../../components/common/BlueBox";
 import { Title } from "../../components/common/Description";
-import { resetButtonStyle } from "../../styles/utils/button";
-import { css } from "@emotion/react";
-import { useState } from "react";
 
 const FormContainer = styled(motion.form)`
   padding: 53px 16px;

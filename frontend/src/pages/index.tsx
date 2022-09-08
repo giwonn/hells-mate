@@ -1,7 +1,9 @@
 import { useState } from "react";
 import type { NextPage } from "next";
 import Image from "next/image";
+import Router from "next/router";
 import BottomSheet from "components/common/ButtomSheet";
+import AddChallengeButton from "components/pages/main/AddChallengeButton";
 import Calendar from "components/pages/main/Calendar";
 import Challenge from "components/pages/main/Challenge";
 import Loading from "components/pages/main/Loading";
@@ -14,8 +16,6 @@ import {
 import { useAxiosData } from "hooks/useAxiosData";
 
 import rankingIcon from "/public/icons/ranking_icon.svg";
-import AddChallengeButton from "components/pages/main/AddChallengeButton";
-import Router from "next/router";
 
 declare global {
   interface Window {
@@ -25,7 +25,6 @@ declare global {
 const Home: NextPage = () => {
   const apiGroupData: any = useAxiosData("/group");
 
-  console.log(apiGroupData);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [isShowing, setIsShowing] = useState(false);
   if (apiGroupData) {

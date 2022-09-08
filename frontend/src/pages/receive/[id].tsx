@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Router, { useRouter } from "next/router";
 import styled from "@emotion/styled";
 import { BoxStyle } from "components/common/BlueBox";
 import { ImageContainer, MoveContainer } from "components/common/Container";
@@ -7,7 +8,6 @@ import { motion } from "framer-motion";
 import { defaultFadeInVariants, staggerOne } from "styles/motions";
 
 import letter from "../../../images/letter.svg";
-import Router, { useRouter } from "next/router";
 
 const FormContainer = styled(motion.form)`
   padding: 53px 16px;

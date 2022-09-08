@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { NextPage } from "next";
 import Image from "next/image";
+import { isBrowser } from "styles/utils/isBrowser";
 
 import kakaoLogin, { init } from "../utils/kakaoLogin";
-import { isBrowser } from "styles/utils/isBrowser";
 
 const LoginButton: NextPage = () => {
   if (isBrowser()) {

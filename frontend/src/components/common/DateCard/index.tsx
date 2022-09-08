@@ -1,11 +1,9 @@
-import { css } from "@emotion/react";
+import { HTMLAttributes } from "react";
 import {
   DateCardContentText,
   DateCardTitleText,
-  DateCardTodayDot,
   StyledDateCard,
 } from "components/common/DateCard/styles";
-import { HTMLAttributes } from "react";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   dateCardTitle: string;
